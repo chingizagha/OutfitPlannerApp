@@ -12,6 +12,8 @@ class HomeNewDressVC: UIViewController {
     private let viewModel: HomeNewDressViewModel
     public weak var delegate: HomeNewDressViewModelDelegate?
     
+    private var oldImage: UIImage?
+    
     private let imageView = CustomImageView(frame: .zero)
     private let addButton = CustomButton(backgroundColor: .blue, title: "Add")
     private let typeButton = CustomButton(backgroundColor: .red, title: "Type")
@@ -121,10 +123,22 @@ class HomeNewDressVC: UIViewController {
         addButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
         typeButton.addTarget(self, action: #selector(didTapTypeButton), for: .touchUpInside)
         magicButton.addTarget(self, action: #selector(didTapMagicButton), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+        backButton.isEnabled = false
     }
     
     @objc
     private func didTapAddButton() {
+        
+        let imageName = UUID().uuidString
+        let imagePath = ImagePath.shared.getDocumentDirectory().appendingPathComponent(imageName)
+        
+        if let jpegData = imageView.image?.jpegData(compressionQuality: 0.8) {
+            try? jpegData.write(to: imagePath)
+        }
+        
+        viewModel.dress.imagePath = imageName
+        
         viewModel.saveData(title: "", imagePath: viewModel.dress.imagePath, type: viewModel.selectedType)
         delegate?.didAddNewDress()
         dismiss(animated: true)
@@ -145,7 +159,17 @@ class HomeNewDressVC: UIViewController {
     
     @objc
     private func didTapMagicButton() {
-        imageView.image = imageView.image?.removeBackground(returnResult: .background)
+        oldImage = imageView.image
+        imageView.image = imageView.image?.removeBackground(returnResult: .finalImage)
+        backButton.isEnabled = true
+        magicButton.isEnabled = false
+    }
+    
+    @objc
+    private func didTapBackButton() {
+        imageView.image = oldImage
+        backButton.isEnabled = false
+        magicButton.isEnabled = true
     }
 }
 

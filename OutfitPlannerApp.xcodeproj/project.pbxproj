@@ -20,6 +20,13 @@
 		7210914C2BF0E5D100932FF8 /* HomeNewDressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7210914B2BF0E5D100932FF8 /* HomeNewDressVC.swift */; };
 		7210914E2BF0E5DD00932FF8 /* HomeNewDressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7210914D2BF0E5DD00932FF8 /* HomeNewDressViewModel.swift */; };
 		72278E592BF52EAA00E8533F /* Dress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72278E582BF52EAA00E8533F /* Dress.swift */; };
+		725305FE2BF7C9BE0045D0E7 /* Outfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725305FD2BF7C9BE0045D0E7 /* Outfit.swift */; };
+		725306002BF7CD140045D0E7 /* OutfitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725305FF2BF7CD140045D0E7 /* OutfitViewModel.swift */; };
+		725306022BF7CDA50045D0E7 /* OutfitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725306012BF7CDA50045D0E7 /* OutfitCell.swift */; };
+		725306032BF7D79F0045D0E7 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 721091372BF0CD6F00932FF8 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7253060B2BF7DB9F0045D0E7 /* OutfitSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253060A2BF7DB9F0045D0E7 /* OutfitSelectVC.swift */; };
+		7253060D2BF7DBB50045D0E7 /* OutfitSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253060C2BF7DBB50045D0E7 /* OutfitSelectViewModel.swift */; };
+		7253060F2BF7DE980045D0E7 /* OutfitSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253060E2BF7DE980045D0E7 /* OutfitSelectCell.swift */; };
 		7260F7632BEE549300FCCFD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260F7622BEE549300FCCFD1 /* AppDelegate.swift */; };
 		7260F7652BEE549300FCCFD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260F7642BEE549300FCCFD1 /* SceneDelegate.swift */; };
 		7260F76F2BEE549300FCCFD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7260F76E2BEE549300FCCFD1 /* Assets.xcassets */; };
@@ -50,6 +57,20 @@
 		72908F2C2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F1B2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		725306042BF7D79F0045D0E7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				725306032BF7D79F0045D0E7 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		72094CEF2BF0F25C00F49737 /* DressItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DressItemCell.swift; sourceTree = "<group>"; };
 		72094CF22BF0F4F300F49737 /* ImagePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePath.swift; sourceTree = "<group>"; };
@@ -63,6 +84,12 @@
 		7210914B2BF0E5D100932FF8 /* HomeNewDressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewDressVC.swift; sourceTree = "<group>"; };
 		7210914D2BF0E5DD00932FF8 /* HomeNewDressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewDressViewModel.swift; sourceTree = "<group>"; };
 		72278E582BF52EAA00E8533F /* Dress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dress.swift; sourceTree = "<group>"; };
+		725305FD2BF7C9BE0045D0E7 /* Outfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outfit.swift; sourceTree = "<group>"; };
+		725305FF2BF7CD140045D0E7 /* OutfitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitViewModel.swift; sourceTree = "<group>"; };
+		725306012BF7CDA50045D0E7 /* OutfitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitCell.swift; sourceTree = "<group>"; };
+		7253060A2BF7DB9F0045D0E7 /* OutfitSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitSelectVC.swift; sourceTree = "<group>"; };
+		7253060C2BF7DBB50045D0E7 /* OutfitSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitSelectViewModel.swift; sourceTree = "<group>"; };
+		7253060E2BF7DE980045D0E7 /* OutfitSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitSelectCell.swift; sourceTree = "<group>"; };
 		7260F75F2BEE549300FCCFD1 /* OutfitPlannerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutfitPlannerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7260F7622BEE549300FCCFD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7260F7642BEE549300FCCFD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +208,40 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		725306052BF7DB610045D0E7 /* OutfitSelect */ = {
+			isa = PBXGroup;
+			children = (
+				725306082BF7DB820045D0E7 /* Model */,
+				725306072BF7DB7E0045D0E7 /* View */,
+				725306062BF7DB780045D0E7 /* ViewModel */,
+			);
+			path = OutfitSelect;
+			sourceTree = "<group>";
+		};
+		725306062BF7DB780045D0E7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7253060C2BF7DBB50045D0E7 /* OutfitSelectViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		725306072BF7DB7E0045D0E7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7253060A2BF7DB9F0045D0E7 /* OutfitSelectVC.swift */,
+				7253060E2BF7DE980045D0E7 /* OutfitSelectCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		725306082BF7DB820045D0E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7260F7562BEE549200FCCFD1 = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +278,7 @@
 				721091482BF0E58100932FF8 /* HomeNewDress */,
 				7260F7882BEE58D100FCCFD1 /* Home */,
 				7260F7892BEE58D700FCCFD1 /* Outfit */,
+				725306052BF7DB610045D0E7 /* OutfitSelect */,
 				7260F7952BEE5C3300FCCFD1 /* Settings */,
 				7260F7862BEE588000FCCFD1 /* TabBarVC.swift */,
 			);
@@ -310,6 +372,7 @@
 		7260F78D2BEE5B6C00FCCFD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				725305FD2BF7C9BE0045D0E7 /* Outfit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				7260F7932BEE5C1300FCCFD1 /* OutfitVC.swift */,
+				725306012BF7CDA50045D0E7 /* OutfitCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,6 +389,7 @@
 		7260F78F2BEE5B7700FCCFD1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				725305FF2BF7CD140045D0E7 /* OutfitViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -413,6 +478,7 @@
 				7260F75B2BEE549300FCCFD1 /* Sources */,
 				7260F75C2BEE549300FCCFD1 /* Frameworks */,
 				7260F75D2BEE549300FCCFD1 /* Resources */,
+				725306042BF7D79F0045D0E7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -480,20 +546,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				72908F092BF79F940029EF9F /* UIImage+Ext.swift in Sources */,
+				7253060D2BF7DBB50045D0E7 /* OutfitSelectViewModel.swift in Sources */,
 				72908F212BF7A3EF0029EF9F /* CGImagePropertyOrientation.swift in Sources */,
 				721091422BF0DF6F00932FF8 /* CustomButton.swift in Sources */,
 				72908F1F2BF7A3EF0029EF9F /* UIImage+Extensions.swift in Sources */,
 				7260F7922BEE5C0700FCCFD1 /* HomeVC.swift in Sources */,
 				72908F232BF7A3EF0029EF9F /* CVPixelBuffer+Create.swift in Sources */,
 				72908F1C2BF7A3EF0029EF9F /* Array+Extensions.swift in Sources */,
+				7253060F2BF7DE980045D0E7 /* OutfitSelectCell.swift in Sources */,
 				7210913F2BF0DF4800932FF8 /* CustomImageView.swift in Sources */,
 				72908F2A2BF7A3EF0029EF9F /* MLMultiArray+Image.swift in Sources */,
 				72908F072BF79F7D0029EF9F /* DeepLabV3.mlmodel in Sources */,
 				72094CF02BF0F25C00F49737 /* DressItemCell.swift in Sources */,
 				7260F7632BEE549300FCCFD1 /* AppDelegate.swift in Sources */,
 				72908F282BF7A3EF0029EF9F /* CGImage+CVPixelBuffer.swift in Sources */,
+				725306022BF7CDA50045D0E7 /* OutfitCell.swift in Sources */,
 				72908F222BF7A3EF0029EF9F /* MLModel+Images.swift in Sources */,
+				7253060B2BF7DB9F0045D0E7 /* OutfitSelectVC.swift in Sources */,
 				7210913C2BF0DE8300932FF8 /* DressCell.swift in Sources */,
+				725306002BF7CD140045D0E7 /* OutfitViewModel.swift in Sources */,
 				7260F7852BEE580200FCCFD1 /* UIView+Ext.swift in Sources */,
 				721091312BF0BE6400932FF8 /* DatabaseManager.swift in Sources */,
 				72908F262BF7A3EF0029EF9F /* Math.swift in Sources */,
@@ -511,6 +582,7 @@
 				72908F252BF7A3EF0029EF9F /* CVPixelBuffer+Rotate.swift in Sources */,
 				7210914C2BF0E5D100932FF8 /* HomeNewDressVC.swift in Sources */,
 				721091472BF0DFAC00932FF8 /* BodyLabel.swift in Sources */,
+				725305FE2BF7C9BE0045D0E7 /* Outfit.swift in Sources */,
 				72908F272BF7A3EF0029EF9F /* Predictions.swift in Sources */,
 				7260F7872BEE588000FCCFD1 /* TabBarVC.swift in Sources */,
 				72908F1D2BF7A3EF0029EF9F /* CVPixelBuffer+Resize.swift in Sources */,
@@ -663,10 +735,11 @@
 				DEVELOPMENT_TEAM = NJVM2X728T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OutfitPlannerApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = " need access to the camera to allow you to take photos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to allow you to select photos.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -681,7 +754,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -695,10 +768,11 @@
 				DEVELOPMENT_TEAM = NJVM2X728T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OutfitPlannerApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = " need access to the camera to allow you to take photos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to allow you to select photos.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -713,7 +787,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

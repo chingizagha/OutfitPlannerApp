@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-enum ClothesType: Int, PersistableEnum {
+enum ClothesType: Int, PersistableEnum, RealmFetchable {
     case top
     case mid
     case bottom

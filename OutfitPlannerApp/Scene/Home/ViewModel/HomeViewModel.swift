@@ -21,7 +21,7 @@ class HomeViewModel {
    
     
     func deleteData(dress: Dress) {
-        databaseManager.deleteData(dress: dress)
+        databaseManager.deleteData(object: dress)
     }
     
     func filterDress(_ type: ClothesType) {

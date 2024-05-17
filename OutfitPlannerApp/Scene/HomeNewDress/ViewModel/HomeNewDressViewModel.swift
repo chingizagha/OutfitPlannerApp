@@ -29,7 +29,7 @@ class HomeNewDressViewModel {
         dress.title = title
         dress.imagePath = imagePath
         dress.type = type
-        databaseManager.saveData(dress: dress)
+        databaseManager.saveData(object: dress)
     }
     
 }

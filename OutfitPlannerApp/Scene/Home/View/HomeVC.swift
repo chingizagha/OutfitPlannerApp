@@ -74,9 +74,6 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     
-    
-
-    
     // MARK: Button Functions
     
     private func didTapAddPhotoButton(_ sourceType: UIImagePickerController.SourceType) {

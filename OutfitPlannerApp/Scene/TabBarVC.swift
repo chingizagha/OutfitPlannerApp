@@ -25,8 +25,8 @@ class TabBarVC: UITabBarController {
         let nav1 = UINavigationController(rootViewController: clothesVC)
         let nav2 = UINavigationController(rootViewController: outfitsVC)
         
-        nav1.tabBarItem = UITabBarItem(title: "Clothes", image: UIImage(systemName: "hanger"), tag: 1)
-        nav2.tabBarItem = UITabBarItem(title: "Outfits", image: UIImage(systemName: "pedal.clutch.fill"), tag: 2)
+        nav1.tabBarItem = UITabBarItem(title: "Clothes", image: UIImage(systemName: "figure.stand"), tag: 1)
+        nav2.tabBarItem = UITabBarItem(title: "Outfits", image: UIImage(systemName: "figure.2.and.child.holdinghands"), tag: 2)
         
         for nav in [nav1, nav2] {
             nav.navigationBar.prefersLargeTitles = true

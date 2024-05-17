@@ -26,26 +26,26 @@ class DatabaseManager {
         
     }
     
-    let realm = try! Realm(configuration: Realm.Configuration(schemaVersion: 2))
+    let realm = try! Realm(configuration: Realm.Configuration(schemaVersion: 3))
     
     // Fetch data
-    func fetchData() -> [Dress] {
-        return realm.objects(Dress.self).map( { $0 })
+    func fetchData<T: Object>() -> [T] {
+        return realm.objects(T.self).map( { $0 })
     }
 
     // Save data
-    func saveData(dress: Dress) {
+    func saveData<T: Object>(object: T) {
         
         try! realm.write {
-            realm.add(dress)
+            realm.add(object)
         }
     }
 
     // Delete data
-    func deleteData(dress: Dress) {
+    func deleteData<T: Object>(object: T) {
         
         try! realm.write {
-            realm.delete(dress)
+            realm.delete(object)
         }
     }
     
