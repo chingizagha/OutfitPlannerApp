@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Dress" representedClassName="Dress" syncable="YES">
+        <attribute name="image" attributeType="Binary"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="outfit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Outfit" inverseName="clothes" inverseEntity="Outfit"/>
+    </entity>
+    <entity name="Outfit" representedClassName="Outfit" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="clothes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dress" inverseName="outfit" inverseEntity="Dress"/>
+    </entity>
+</model>
