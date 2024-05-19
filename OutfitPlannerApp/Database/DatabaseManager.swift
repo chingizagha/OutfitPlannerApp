@@ -26,7 +26,7 @@ class DatabaseManager {
         
     }
     
-    let realm = try! Realm(configuration: Realm.Configuration(schemaVersion: 3))
+    let realm = try! Realm(configuration: Realm.Configuration(schemaVersion: 4))
     
     // Fetch data
     func fetchData<T: Object>() -> [T] {

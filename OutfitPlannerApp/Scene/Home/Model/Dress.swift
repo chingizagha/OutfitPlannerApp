@@ -8,35 +8,40 @@
 import RealmSwift
 
 enum ClothesType: Int, PersistableEnum, RealmFetchable {
-    case top
-    case mid
-    case bottom
-    case other
+    case jacket
+    case tshirt
+    case jeans
+    case shoes
+    case accessory
     
     var title: String {
         switch self {
-        case .top:
+        case .jacket:
             return "Top"
-        case .mid:
+        case .tshirt:
             return "Medium"
-        case .bottom:
+        case .jeans:
             return "Bottom"
-        case .other:
+        case .shoes:
             return "Other"
+        case .accessory:
+            return "Accessory"
         }
         
     }
     
     var number: Int {
         switch self {
-        case .top:
+        case .jacket:
             return 0
-        case .mid:
+        case .tshirt:
             return 1
-        case .bottom:
+        case .jeans:
             return 2
-        case .other:
+        case .shoes:
             return 3
+        case .accessory:
+            return 4
         }
     }
 }

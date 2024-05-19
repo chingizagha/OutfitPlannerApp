@@ -9,4 +9,15 @@ import Foundation
 
 class OutfitViewModel {
     
+    var outfitArray = [Outfit]()
+    
+    let databaseManager = DatabaseManager()
+    
+    func fetchData() {
+        outfitArray = databaseManager.fetchData()
+    }
+    
+    func deleteData(outfit: Outfit) {
+        databaseManager.deleteData(object: outfit)
+    }
 }

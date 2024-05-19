@@ -28,17 +28,7 @@ class HomeNewDressVC: UIViewController {
         pv.translatesAutoresizingMaskIntoConstraints = false
         return pv
     }()
-    
-//    private let stackView: UIStackView = {
-//        let stackView = UIStackView()
-//        stackView.axis = .vertical
-//        stackView.distribution = .equalSpacing
-//        stackView.alignment = .center
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.layer.cornerRadius = 10
-//        return stackView
-//    }()
-    
+        
     init(viewModel: HomeNewDressViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -49,13 +39,6 @@ class HomeNewDressVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError()
     }
-    
-//    init(dress: Dress) {
-//        self.dress = dress
-//        super.init(nibName: nil, bundle: nil)
-//        let path = ImagePath.shared.getDocumentDirectory().appendingPathComponent(dress.imagePath)
-//        imageView.image = UIImage(contentsOfFile: path.path)
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,18 +66,12 @@ class HomeNewDressVC: UIViewController {
             imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
             
-//            stackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
-//            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-//            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-//            stackView.heightAnchor.constraint(equalToConstant: 100),
-            
             typeButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
             typeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
             typeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             typeButton.heightAnchor.constraint(equalToConstant: 50),
             
             magicButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.68),
-            // Set button2 width to be 20% of the view's width
             backButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
             
             // Set buttons to be in the same row

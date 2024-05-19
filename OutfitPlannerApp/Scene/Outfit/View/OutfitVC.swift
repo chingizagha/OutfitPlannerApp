@@ -12,7 +12,7 @@ class OutfitVC: UIViewController {
     let viewModel = OutfitViewModel()
     
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Dress>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, Outfit>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,16 @@ class OutfitVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         navigationItem.rightBarButtonItem = setUpDropDown()
+        getOutfits()
+        configureCollectionView()
+        configureDataSource()
+        layoutUI()
+    }
+    
+    private func getOutfits() {
+        viewModel.fetchData()
+        self.updateData(on: viewModel.outfitArray)
+        print(viewModel.outfitArray)
     }
     
     private func setUpDropDown() -> UIBarButtonItem{
@@ -62,22 +72,22 @@ class OutfitVC: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createFlowLayout(in: view))
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
-        collectionView.register(DressCell.self, forCellWithReuseIdentifier: DressCell.identifier)
+        collectionView.register(OutfitCell.self, forCellWithReuseIdentifier: OutfitCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Dress>(collectionView: collectionView, cellProvider: { collectionView, indexPath, dress in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DressCell.identifier, for: indexPath) as! DressCell
-            cell.configure(dress: dress)
+        dataSource = UICollectionViewDiffableDataSource<Section, Outfit>(collectionView: collectionView, cellProvider: { collectionView, indexPath, outfit in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OutfitCell.identifier, for: indexPath) as! OutfitCell
+            cell.configure(outfit: outfit)
             return cell
         })
     }
     
-    private func updateData(on dress: [Dress]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Dress>()
+    private func updateData(on outfit: [Outfit]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Outfit>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(dress)
+        snapshot.appendItems(outfit)
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
         }
@@ -90,7 +100,7 @@ class OutfitVC: UIViewController {
         let padding: CGFloat = 12
         let minimumItemSpacing: CGFloat = 10
         let availableWidth = width - (padding * 2) - (minimumItemSpacing * 2)
-        let itemWidth = availableWidth / 3
+        let itemWidth = availableWidth / 2
         layout.itemSize = CGSize(width: itemWidth, height: itemWidth + 40)
         layout.sectionInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         return layout
@@ -99,4 +109,7 @@ class OutfitVC: UIViewController {
 
 extension OutfitVC: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }

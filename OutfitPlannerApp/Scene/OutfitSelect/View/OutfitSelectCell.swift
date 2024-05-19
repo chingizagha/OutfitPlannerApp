@@ -13,14 +13,16 @@ class OutfitSelectCell: UITableViewCell {
     
     private let titleImageView: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        image.layer.cornerRadius = 21
+        image.contentMode = .scaleAspectFill
+        image.layer.masksToBounds = true
+        image.layer.cornerRadius = 5
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .systemBackground
         layoutUI()
     }
     
@@ -36,8 +38,8 @@ class OutfitSelectCell: UITableViewCell {
         NSLayoutConstraint.activate([
             titleImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            titleImageView.heightAnchor.constraint(equalToConstant: 30),
-            titleImageView.widthAnchor.constraint(equalToConstant: 30),
+            titleImageView.heightAnchor.constraint(equalToConstant: 60),
+            titleImageView.widthAnchor.constraint(equalToConstant: 60),
         ])
     }
     

@@ -33,7 +33,7 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         
         title = "Clothes"
         
-        // Find url for Realm database
+         //Find url for Realm database
 //        let realm = try! Realm()
 //        print(Realm.Configuration.defaultConfiguration.fileURL)
         
@@ -94,7 +94,7 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             try? jpegData.write(to: imagePath)
         }
         
-        let allCases: [ClothesType] = [.bottom, .mid, .top]
+        let allCases: [ClothesType] = [.jeans, .tshirt, .jacket]
         
         let dress = Dress()
         dress.imagePath = imageName
