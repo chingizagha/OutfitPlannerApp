@@ -18,9 +18,9 @@ class CustomButton: UIButton {
         fatalError()
     }
     
-     convenience init(backgroundColor: UIColor, title: String){
+    convenience init(backgroundColor: UIColor, icon: String = "", title: String = ""){
         self.init(frame: .zero)
-        set(color: backgroundColor, title: title)
+        set(color: backgroundColor, icon: icon, title: title)
     }
     
     private func configure(){
@@ -29,9 +29,17 @@ class CustomButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func set(color: UIColor, title: String){
-        configuration?.baseBackgroundColor = .systemGray
+    func set(color: UIColor, icon: String = "", title: String = ""){
+        configuration?.baseBackgroundColor = color
         configuration?.baseForegroundColor = color
         configuration?.title = title
+        
+        configuration?.image = UIImage(systemName: "\(icon)")
+        configuration?.imagePadding = 6
+        configuration?.imagePlacement = .leading
     }
+}
+
+#Preview() {
+    CustomButton(backgroundColor: .systemGray, icon: "pencil", title: "Magic")
 }

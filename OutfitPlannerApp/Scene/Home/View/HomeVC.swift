@@ -8,15 +8,12 @@
 import UIKit
 import RealmSwift
 
-enum Section {
-    case main
-}
-
 class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     let viewModel = HomeViewModel()
     
     private var isSegmentModeOn = false
+    private var titleArray = [String]()
     
     private let segmentedController: UISegmentedControl = {
         let sc = UISegmentedControl()
@@ -24,7 +21,47 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         return sc
     }()
     
+    private let scrollView: UIScrollView = {
+        let scroll = UIScrollView(frame: .zero)
+        scroll.alwaysBounceVertical = true
+        scroll.showsVerticalScrollIndicator = false
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        return scroll
+    }()
     
+    private let contentView: UIView = {
+        let view = UIView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var segmentedCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 100, height: 50)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.white.withAlphaComponent(0)
+        collectionView.register(SegmentedCell.self, forCellWithReuseIdentifier: SegmentedCell.identifier)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0)
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+
+    
+    let gradientLayer = CAGradientLayer()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // Update the gradient layer frame to match the view's bounds
+        gradientLayer.frame = view.bounds
+    }
+
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Dress>!
     
@@ -37,10 +74,16 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 //        let realm = try! Realm()
 //        print(Realm.Configuration.defaultConfiguration.fileURL)
         
-        view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor = .systemPink
         
         navigationItem.rightBarButtonItem = setUpDropDown()
+        
+        gradientLayer.frame = view.bounds
+        
+        // Add the gradient layer to the view's layer
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        
+        addGradientBackground()
         
         getClothes()
         configureCollectionView()
@@ -48,6 +91,41 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         configureDataSource()
         layoutUI()
         
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        // Check if the user interface style has changed
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            addGradientBackground()
+        }
+    }
+
+    func addGradientBackground() {
+        
+        if traitCollection.userInterfaceStyle == .dark {
+            // Colors for dark mode
+            gradientLayer.colors = [
+                UIColor.secondarySystemBackground.cgColor,
+                UIColor.systemGreen.cgColor
+            ]
+            print("dark")
+        } else {
+            // Colors for light mode
+            gradientLayer.colors = [
+                UIColor.systemBackground.cgColor,
+                UIColor.green.cgColor
+            ]
+            print("else")
+        }
+        
+        // Optionally set the locations of the colors
+        gradientLayer.locations = [0.0, 1.0]
+        
+        // Optionally set the start and end points of the gradient
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
     }
     
     private func getClothes() {
@@ -60,6 +138,7 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     private func setupSegmentedControl() {
         for segment in ClothesType.allCases {
+            titleArray.append(segment.title)
             segmentedController.insertSegment(withTitle: segment.title, at: segment.rawValue, animated: true)
         }
         
@@ -133,18 +212,37 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     private func layoutUI(){
         
-        view.addSubviews(segmentedController, collectionView)
+        scrollView.addSubview(contentView)
+        contentView.addSubviews(segmentedCollectionView, collectionView)
+        view.addSubviews(scrollView)
+        
+        let hConst = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+        hConst.isActive = true
+        hConst.priority = UILayoutPriority(50)
+        
         
         NSLayoutConstraint.activate([
-            segmentedController.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            segmentedController.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            segmentedController.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            segmentedController.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                        
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            collectionView.topAnchor.constraint(equalTo: segmentedController.bottomAnchor, constant: 20),
-            collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            
+            segmentedCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            segmentedCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            segmentedCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            segmentedCollectionView.heightAnchor.constraint(equalToConstant: 60),
+            
+            collectionView.topAnchor.constraint(equalTo: segmentedCollectionView.bottomAnchor, constant: 5),
+            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
     
@@ -154,6 +252,8 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createFlowLayout(in: view))
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
+        collectionView.showsVerticalScrollIndicator = false
+        //collectionView.alwaysBounceVertical = true
         collectionView.register(DressCell.self, forCellWithReuseIdentifier: DressCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -180,15 +280,13 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         layout.scrollDirection = .vertical
         let width = view.bounds.width
         let padding: CGFloat = 12
-        let minimumItemSpacing: CGFloat = 10
+        let minimumItemSpacing: CGFloat = 20
         let availableWidth = width - (padding * 2) - (minimumItemSpacing * 2)
-        let itemWidth = availableWidth / 3
-        layout.itemSize = CGSize(width: itemWidth, height: itemWidth + 40)
+        let itemWidth = availableWidth / 2
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
         layout.sectionInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         return layout
     }
-    
-    
 }
 
 extension HomeVC: UICollectionViewDelegate {
@@ -215,11 +313,43 @@ extension HomeVC: UICollectionViewDelegate {
 }
 
 extension HomeVC: HomeNewDressViewModelDelegate {
+    
     func didAddNewDress() {
         getClothes()
     }
     
     
+}
+
+extension HomeVC: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.segmentedCollectionView {
+            return ClothesType.allCases.count
+        }
+        return 0
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == self.segmentedCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SegmentedCell.identifier, for: indexPath) as? SegmentedCell else {fatalError()}
+            cell.configure(title: titleArray[indexPath.row])
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView == self.segmentedCollectionView {
+            print(indexPath.row)
+            if let selectedSegment = ClothesType(rawValue: indexPath.item) {
+                isSegmentModeOn = true
+                viewModel.filterDress(selectedSegment)
+                self.updateData(on: viewModel.filteredDressArray)
+            }
+        }
+    }
 }
 
 

@@ -129,6 +129,7 @@ class OutfitCreateVC: UIViewController {
         outfit.imagePath = imageName
         outfit.title = textField.text
         viewModel.saveOutfit(outfit: outfit)
+        NotificationCenter.default.post(name: NSNotification.Name("outfitAdded"), object: nil)
         navigationController?.popToRootViewController(animated: true)
     }
     

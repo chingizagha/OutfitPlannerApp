@@ -7,12 +7,25 @@
 
 import UIKit
 
+enum Section {
+    case main
+}
+
 class OutfitVC: UIViewController {
     
     let viewModel = OutfitViewModel()
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Outfit>!
+    
+    let gradientLayer = CAGradientLayer()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // Update the gradient layer frame to match the view's bounds
+        gradientLayer.frame = view.bounds
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,19 +33,61 @@ class OutfitVC: UIViewController {
         title = "Outfits"
         
         view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles = true
         
         navigationItem.rightBarButtonItem = setUpDropDown()
+        
+        gradientLayer.frame = view.bounds
+        
+        // Add the gradient layer to the view's layer
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        
+        addGradientBackground()
+        
         getOutfits()
         configureCollectionView()
         configureDataSource()
         layoutUI()
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("outfitAdded"), object: nil, queue: nil) { _ in
+            self.getOutfits()
+        }
+        
+        
     }
     
-    private func getOutfits() {
-        viewModel.fetchData()
-        self.updateData(on: viewModel.outfitArray)
-        print(viewModel.outfitArray)
+    
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        // Check if the user interface style has changed
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            addGradientBackground()
+        }
+    }
+    
+    func addGradientBackground() {
+        
+        if traitCollection.userInterfaceStyle == .dark {
+            // Colors for dark mode
+            gradientLayer.colors = [
+                UIColor.secondarySystemBackground.cgColor,
+                UIColor.systemGreen.cgColor
+            ]
+        } else {
+            // Colors for light mode
+            gradientLayer.colors = [
+                UIColor.systemBackground.cgColor,
+                UIColor.green.cgColor
+            ]
+        }
+        
+        // Optionally set the locations of the colors
+        gradientLayer.locations = [0.0, 1.0]
+        
+        // Optionally set the start and end points of the gradient
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
     }
     
     private func setUpDropDown() -> UIBarButtonItem{
@@ -62,8 +117,15 @@ class OutfitVC: UIViewController {
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    // MARK: Data Function
+    
+    private func getOutfits() {
+        viewModel.fetchData()
+        self.updateData(on: viewModel.outfitArray)
     }
     
     // MARK: CollectionView Set Up
@@ -72,6 +134,7 @@ class OutfitVC: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createFlowLayout(in: view))
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
+        collectionView.alwaysBounceVertical = true
         collectionView.register(OutfitCell.self, forCellWithReuseIdentifier: OutfitCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -112,4 +175,21 @@ extension OutfitVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(
+            identifier: nil,
+            previewProvider: nil) {[weak self] _ in
+                let downloadAction = UIAction(title: "Remove", image: .remove) {  _ in
+                    guard let self else {return}
+                    let outfit = self.viewModel.outfitArray[indexPath.row]
+                    
+                    self.viewModel.deleteData(outfit: outfit)
+                    self.getOutfits()
+                }
+                return UIMenu(children: [downloadAction])
+            }
+        return config
+    }
 }
+

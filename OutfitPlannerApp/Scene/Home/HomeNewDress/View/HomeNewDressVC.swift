@@ -15,10 +15,10 @@ class HomeNewDressVC: UIViewController {
     private var oldImage: UIImage?
     
     private let imageView = CustomImageView(frame: .zero)
-    private let addButton = CustomButton(backgroundColor: .blue, title: "Add")
-    private let typeButton = CustomButton(backgroundColor: .red, title: "Type")
-    private let magicButton = CustomButton(backgroundColor: .green, title: "Magic")
-    private let backButton = CustomButton(backgroundColor: .yellow, title: "Back")
+    private let addButton = CustomButton(backgroundColor: .systemBlue, title: "Add")
+    private let typeButton = CustomButton(backgroundColor: .systemGray, title: "Type")
+    private let magicButton = CustomButton(backgroundColor: .systemGray, icon: "pencil", title: "Magic")
+    private let backButton = CustomButton(backgroundColor: .systemGray, icon: "arrowshape.turn.up.backward", title: "")
     
     private lazy var pickerView: UIPickerView = {
         let pv = UIPickerView()
@@ -71,22 +71,24 @@ class HomeNewDressVC: UIViewController {
             typeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             typeButton.heightAnchor.constraint(equalToConstant: 50),
             
+            addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            addButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            addButton.heightAnchor.constraint(equalToConstant: 50),
+            
             magicButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.68),
             backButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
             
             // Set buttons to be in the same row
             magicButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            magicButton.topAnchor.constraint(equalTo: typeButton.bottomAnchor, constant: 20),
+            magicButton.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -20),
             magicButton.heightAnchor.constraint(equalToConstant: 50),
             //backButton.leadingAnchor.constraint(equalTo: magicButton.trailingAnchor, constant: padding),
             backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             backButton.topAnchor.constraint(equalTo: magicButton.topAnchor),
             backButton.bottomAnchor.constraint(equalTo: magicButton.bottomAnchor),
             
-            addButton.topAnchor.constraint(equalTo: magicButton.bottomAnchor, constant: 20),
-            addButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            addButton.heightAnchor.constraint(equalToConstant: 50),
+            
             
             pickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             pickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),

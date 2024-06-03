@@ -57,6 +57,7 @@
 		72908F2A2BF7A3EF0029EF9F /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F192BF7A3EF0029EF9F /* MLMultiArray+Image.swift */; };
 		72908F2B2BF7A3EF0029EF9F /* UIImage+RawBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F1A2BF7A3EF0029EF9F /* UIImage+RawBytes.swift */; };
 		72908F2C2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F1B2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift */; };
+		72D8C98A2C037F3800550B6B /* SegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D8C9892C037F3800550B6B /* SegmentedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,6 +125,7 @@
 		72908F192BF7A3EF0029EF9F /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
 		72908F1A2BF7A3EF0029EF9F /* UIImage+RawBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RawBytes.swift"; sourceTree = "<group>"; };
 		72908F1B2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		72D8C9892C037F3800550B6B /* SegmentedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,11 +314,8 @@
 		7260F7792BEE54D700FCCFD1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				721091482BF0E58100932FF8 /* HomeNewDress */,
 				7260F7882BEE58D100FCCFD1 /* Home */,
 				7260F7892BEE58D700FCCFD1 /* Outfit */,
-				725306052BF7DB610045D0E7 /* OutfitSelect */,
-				721E105B2BFA23A000D9715E /* OutfitCreate */,
 				7260F7952BEE5C3300FCCFD1 /* Settings */,
 				7260F7862BEE588000FCCFD1 /* TabBarVC.swift */,
 			);
@@ -368,6 +367,7 @@
 				7260F78A2BEE5B1F00FCCFD1 /* Model */,
 				7260F78B2BEE5B2300FCCFD1 /* View */,
 				7260F78C2BEE5B2600FCCFD1 /* ViewModel */,
+				721091482BF0E58100932FF8 /* HomeNewDress */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -378,6 +378,8 @@
 				7260F78D2BEE5B6C00FCCFD1 /* Model */,
 				7260F78E2BEE5B7000FCCFD1 /* View */,
 				7260F78F2BEE5B7700FCCFD1 /* ViewModel */,
+				725306052BF7DB610045D0E7 /* OutfitSelect */,
+				721E105B2BFA23A000D9715E /* OutfitCreate */,
 			);
 			path = Outfit;
 			sourceTree = "<group>";
@@ -395,6 +397,7 @@
 			children = (
 				7260F7912BEE5C0700FCCFD1 /* HomeVC.swift */,
 				7210913B2BF0DE8300932FF8 /* DressCell.swift */,
+				72D8C9892C037F3800550B6B /* SegmentedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				725306002BF7CD140045D0E7 /* OutfitViewModel.swift in Sources */,
 				7260F7852BEE580200FCCFD1 /* UIView+Ext.swift in Sources */,
 				721E10602BFA23F300D9715E /* OutfitCreateVC.swift in Sources */,
+				72D8C98A2C037F3800550B6B /* SegmentedCell.swift in Sources */,
 				721091312BF0BE6400932FF8 /* DatabaseManager.swift in Sources */,
 				72908F262BF7A3EF0029EF9F /* Math.swift in Sources */,
 				721091332BF0C7C600932FF8 /* HomeViewModel.swift in Sources */,
@@ -780,7 +784,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -813,7 +817,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
