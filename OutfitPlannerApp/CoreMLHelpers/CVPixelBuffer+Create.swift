@@ -125,7 +125,7 @@ public extension CVPixelBuffer {
     var combinedAttributes: [String: Any] = [:]
 
     // Copy attachment attributes.
-    if let attachments = CVBufferGetAttachments(srcPixelBuffer, .shouldPropagate) as? [String: Any] {
+      if let attachments = CVBufferCopyAttachments(srcPixelBuffer, .shouldPropagate) as? [String: Any] {
       for (key, value) in attachments {
         combinedAttributes[key] = value
       }

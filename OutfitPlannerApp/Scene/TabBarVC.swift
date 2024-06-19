@@ -19,11 +19,11 @@ class TabBarVC: UITabBarController {
         let clothesVC = HomeVC()
         let outfitsVC = OutfitVC()
         
-        clothesVC.navigationItem.largeTitleDisplayMode = .automatic
+        clothesVC.navigationItem.largeTitleDisplayMode = .always
         outfitsVC.navigationItem.largeTitleDisplayMode = .automatic
         
         let nav1 = UINavigationController(rootViewController: clothesVC)
-        let nav2 = UINavigationController(rootViewController: outfitsVC)
+        let nav2 = UINavigationController(rootViewController: outfitsVC) 
         
         nav1.tabBarItem = UITabBarItem(title: "Clothes", image: UIImage(systemName: "figure.stand"), tag: 1)
         nav2.tabBarItem = UITabBarItem(title: "Outfits", image: UIImage(systemName: "figure.2.and.child.holdinghands"), tag: 2)

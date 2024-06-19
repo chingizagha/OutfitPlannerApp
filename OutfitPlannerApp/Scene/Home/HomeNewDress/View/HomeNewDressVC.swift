@@ -15,7 +15,7 @@ class HomeNewDressVC: UIViewController {
     private var oldImage: UIImage?
     
     private let imageView = CustomImageView(frame: .zero)
-    private let addButton = CustomButton(backgroundColor: .systemBlue, title: "Add")
+    //private let addButton = CustomButton(backgroundColor: .systemBlue, title: "Add")
     private let typeButton = CustomButton(backgroundColor: .systemGray, title: "Type")
     private let magicButton = CustomButton(backgroundColor: .systemGray, icon: "pencil", title: "Magic")
     private let backButton = CustomButton(backgroundColor: .systemGray, icon: "arrowshape.turn.up.backward", title: "")
@@ -28,7 +28,7 @@ class HomeNewDressVC: UIViewController {
         pv.translatesAutoresizingMaskIntoConstraints = false
         return pv
     }()
-        
+    
     init(viewModel: HomeNewDressViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -45,6 +45,9 @@ class HomeNewDressVC: UIViewController {
         
         view.backgroundColor = .systemBackground
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(didTapAddButton))
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
         view.addGestureRecognizer(tapGesture)
         
@@ -58,7 +61,7 @@ class HomeNewDressVC: UIViewController {
         let padding: CGFloat = 20
         
         
-        view.addSubviews(imageView, typeButton, addButton, pickerView, magicButton, backButton)
+        view.addSubviews(imageView, typeButton, pickerView, magicButton, backButton)
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -71,17 +74,17 @@ class HomeNewDressVC: UIViewController {
             typeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             typeButton.heightAnchor.constraint(equalToConstant: 50),
             
-            addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-            addButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            addButton.heightAnchor.constraint(equalToConstant: 50),
+            //            addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            //            addButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            //            addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            //            addButton.heightAnchor.constraint(equalToConstant: 50),
             
             magicButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.68),
             backButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
             
             // Set buttons to be in the same row
             magicButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            magicButton.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -20),
+            magicButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             magicButton.heightAnchor.constraint(equalToConstant: 50),
             //backButton.leadingAnchor.constraint(equalTo: magicButton.trailingAnchor, constant: padding),
             backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
@@ -99,7 +102,7 @@ class HomeNewDressVC: UIViewController {
     // MARK: Set Up Button
     
     private func setUpButtons() {
-        addButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+        //addButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
         typeButton.addTarget(self, action: #selector(didTapTypeButton), for: .touchUpInside)
         magicButton.addTarget(self, action: #selector(didTapMagicButton), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
@@ -121,6 +124,11 @@ class HomeNewDressVC: UIViewController {
         viewModel.saveData(title: "", imagePath: viewModel.dress.imagePath, type: viewModel.selectedType)
         delegate?.didAddNewDress()
         dismiss(animated: true)
+    }
+    
+    @objc
+    private func didTapCancelButton() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc

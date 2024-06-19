@@ -139,19 +139,16 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     private func setupSegmentedControl() {
         for segment in ClothesType.allCases {
             titleArray.append(segment.title)
-            segmentedController.insertSegment(withTitle: segment.title, at: segment.rawValue, animated: true)
         }
-        
-        segmentedController.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
     }
 
-    @objc private func segmentChanged(_ sender: UISegmentedControl) {
-        if let selectedSegment = ClothesType(rawValue: sender.selectedSegmentIndex) {
-            isSegmentModeOn = true
-            viewModel.filterDress(selectedSegment)
-            self.updateData(on: viewModel.filteredDressArray)
-        }
-    }
+//    @objc private func segmentChanged(_ sender: UISegmentedControl) {
+//        if let selectedSegment = ClothesType(rawValue: sender.selectedSegmentIndex) {
+//            isSegmentModeOn = true
+//            viewModel.filterDress(selectedSegment)
+//            self.updateData(on: viewModel.filteredDressArray)
+//        }
+//    }
     
     // MARK: Button Functions
     
@@ -182,10 +179,10 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         
         let vm = HomeNewDressViewModel(dress: dress)
         let vc = HomeNewDressVC(viewModel: vm)
-        vc.delegate = self
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
         
         picker.dismiss(animated: true)
-        present(vc, animated: true)
     }
     
     private func setUpDropDown() -> UIBarButtonItem{
@@ -252,6 +249,7 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createFlowLayout(in: view))
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = false
         //collectionView.alwaysBounceVertical = true
         collectionView.register(DressCell.self, forCellWithReuseIdentifier: DressCell.identifier)
@@ -290,11 +288,7 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 }
 
 extension HomeVC: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-    }
-    
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let config = UIContextMenuConfiguration(
             identifier: nil,
@@ -340,15 +334,23 @@ extension HomeVC: UICollectionViewDataSource {
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.segmentedCollectionView {
-            print(indexPath.row)
-            if let selectedSegment = ClothesType(rawValue: indexPath.item) {
-                isSegmentModeOn = true
-                viewModel.filterDress(selectedSegment)
-                self.updateData(on: viewModel.filteredDressArray)
-            }
+                print("Selected item in collectionView1 at \(indexPath.row)")
+                if let selectedSegment = ClothesType(rawValue: indexPath.row) {
+                    isSegmentModeOn = true
+                    viewModel.filterDress(selectedSegment)
+                    self.updateData(on: viewModel.filteredDressArray)
+                }
+        } else  {
+            let image = (isSegmentModeOn ? viewModel.filteredDressArray : viewModel.dressArray)[indexPath.row]
+            let path = ImagePath.shared.getDocumentDirectory().appendingPathComponent(image.imagePath)
+            let fullImage = UIImage(contentsOfFile: path.path)
+            let vc = ImageVC(title: "", image: fullImage ?? UIImage(systemName: "person")!)
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
         }
+
     }
 }
 

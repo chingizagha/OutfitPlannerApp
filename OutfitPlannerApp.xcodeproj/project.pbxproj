@@ -57,6 +57,7 @@
 		72908F2A2BF7A3EF0029EF9F /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F192BF7A3EF0029EF9F /* MLMultiArray+Image.swift */; };
 		72908F2B2BF7A3EF0029EF9F /* UIImage+RawBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F1A2BF7A3EF0029EF9F /* UIImage+RawBytes.swift */; };
 		72908F2C2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F1B2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift */; };
+		72A428DE2C21C93000A03A68 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A428DD2C21C93000A03A68 /* ImageVC.swift */; };
 		72D8C98A2C037F3800550B6B /* SegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D8C9892C037F3800550B6B /* SegmentedCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		72908F192BF7A3EF0029EF9F /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
 		72908F1A2BF7A3EF0029EF9F /* UIImage+RawBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RawBytes.swift"; sourceTree = "<group>"; };
 		72908F1B2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		72A428DD2C21C93000A03A68 /* ImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
 		72D8C9892C037F3800550B6B /* SegmentedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -314,6 +316,7 @@
 		7260F7792BEE54D700FCCFD1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				72A428D72C21C8C900A03A68 /* Image */,
 				7260F7882BEE58D100FCCFD1 /* Home */,
 				7260F7892BEE58D700FCCFD1 /* Outfit */,
 				7260F7952BEE5C3300FCCFD1 /* Settings */,
@@ -509,6 +512,38 @@
 			path = CoreMLHelpers;
 			sourceTree = "<group>";
 		};
+		72A428D72C21C8C900A03A68 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				72A428DA2C21C8F300A03A68 /* Model */,
+				72A428D92C21C8EA00A03A68 /* View */,
+				72A428D82C21C8E400A03A68 /* ViewModel */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		72A428D82C21C8E400A03A68 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		72A428D92C21C8EA00A03A68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72A428DD2C21C93000A03A68 /* ImageVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72A428DA2C21C8F300A03A68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -606,6 +641,7 @@
 				7253060B2BF7DB9F0045D0E7 /* OutfitSelectVC.swift in Sources */,
 				7210913C2BF0DE8300932FF8 /* DressCell.swift in Sources */,
 				725306002BF7CD140045D0E7 /* OutfitViewModel.swift in Sources */,
+				72A428DE2C21C93000A03A68 /* ImageVC.swift in Sources */,
 				7260F7852BEE580200FCCFD1 /* UIView+Ext.swift in Sources */,
 				721E10602BFA23F300D9715E /* OutfitCreateVC.swift in Sources */,
 				72D8C98A2C037F3800550B6B /* SegmentedCell.swift in Sources */,
