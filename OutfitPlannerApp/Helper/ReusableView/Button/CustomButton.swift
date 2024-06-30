@@ -18,20 +18,20 @@ class CustomButton: UIButton {
         fatalError()
     }
     
-    convenience init(backgroundColor: UIColor, icon: String = "", title: String = ""){
+    convenience init(backgroundColor: UIColor, titleColor: UIColor = .systemBackground, icon: String = "", title: String = ""){
         self.init(frame: .zero)
-        set(color: backgroundColor, icon: icon, title: title)
+        set(color: backgroundColor, titleColor: titleColor,  icon: icon, title: title)
     }
     
     private func configure(){
-        configuration = .tinted()
+        configuration = .bordered()
         configuration?.cornerStyle = .medium
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func set(color: UIColor, icon: String = "", title: String = ""){
+    func set(color: UIColor, titleColor: UIColor = .systemBackground, icon: String = "", title: String = ""){
         configuration?.baseBackgroundColor = color
-        configuration?.baseForegroundColor = color
+        configuration?.baseForegroundColor = titleColor
         configuration?.title = title
         
         configuration?.image = UIImage(systemName: "\(icon)")
@@ -41,5 +41,11 @@ class CustomButton: UIButton {
 }
 
 #Preview() {
-    CustomButton(backgroundColor: .systemGray, icon: "pencil", title: "Magic")
+    CustomButton(backgroundColor: .clear, icon: "pencil", title: "Magic")
 }
+
+
+
+
+
+

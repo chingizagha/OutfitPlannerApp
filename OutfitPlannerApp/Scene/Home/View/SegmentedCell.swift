@@ -12,28 +12,24 @@ class SegmentedCell: UICollectionViewCell {
     static let identifier = "SegmentedCell"
     
     let padding: CGFloat = 8
-    
-    
+        
     let nameLabel = TitleLabel(textAlignment: .center, fontSize: 16)
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .secondarySystemBackground
         layoutUI()
     }
     
     override var isSelected: Bool {
-            didSet {
-                contentView.backgroundColor = isSelected ? .black : UIColor.white.withAlphaComponent(0)
-                nameLabel.textColor = isSelected ? .white : .black
-            }
+        didSet {
+            contentView.backgroundColor = isSelected ? .black : UIColor.white.withAlphaComponent(0)
+            nameLabel.textColor = isSelected ? .white : .black
         }
+    }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
-    
-    
     
     private func layoutUI(){
         
@@ -50,7 +46,7 @@ class SegmentedCell: UICollectionViewCell {
             nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
+            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
         ])
     }
     

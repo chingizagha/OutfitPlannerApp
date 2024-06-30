@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		72094CF02BF0F25C00F49737 /* DressItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72094CEF2BF0F25C00F49737 /* DressItemCell.swift */; };
+		72094CF02BF0F25C00F49737 /* DressTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72094CEF2BF0F25C00F49737 /* DressTypeCell.swift */; };
 		72094CF32BF0F4F300F49737 /* ImagePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72094CF22BF0F4F300F49737 /* ImagePath.swift */; };
 		721091312BF0BE6400932FF8 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721091302BF0BE6400932FF8 /* DatabaseManager.swift */; };
 		721091332BF0C7C600932FF8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721091322BF0C7C600932FF8 /* HomeViewModel.swift */; };
-		721091382BF0CD6F00932FF8 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 721091372BF0CD6F00932FF8 /* RealmSwift */; };
 		7210913C2BF0DE8300932FF8 /* DressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7210913B2BF0DE8300932FF8 /* DressCell.swift */; };
 		7210913F2BF0DF4800932FF8 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7210913E2BF0DF4800932FF8 /* CustomImageView.swift */; };
 		721091422BF0DF6F00932FF8 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721091412BF0DF6F00932FF8 /* CustomButton.swift */; };
@@ -25,7 +24,6 @@
 		725305FE2BF7C9BE0045D0E7 /* Outfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725305FD2BF7C9BE0045D0E7 /* Outfit.swift */; };
 		725306002BF7CD140045D0E7 /* OutfitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725305FF2BF7CD140045D0E7 /* OutfitViewModel.swift */; };
 		725306022BF7CDA50045D0E7 /* OutfitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725306012BF7CDA50045D0E7 /* OutfitCell.swift */; };
-		725306032BF7D79F0045D0E7 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 721091372BF0CD6F00932FF8 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7253060B2BF7DB9F0045D0E7 /* OutfitSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253060A2BF7DB9F0045D0E7 /* OutfitSelectVC.swift */; };
 		7253060D2BF7DBB50045D0E7 /* OutfitSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253060C2BF7DBB50045D0E7 /* OutfitSelectViewModel.swift */; };
 		7253060F2BF7DE980045D0E7 /* OutfitSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253060E2BF7DE980045D0E7 /* OutfitSelectCell.swift */; };
@@ -58,7 +56,17 @@
 		72908F2B2BF7A3EF0029EF9F /* UIImage+RawBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F1A2BF7A3EF0029EF9F /* UIImage+RawBytes.swift */; };
 		72908F2C2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F1B2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift */; };
 		72A428DE2C21C93000A03A68 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A428DD2C21C93000A03A68 /* ImageVC.swift */; };
+		72A5D8ED2C3177DA004519C9 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A5D8EC2C3177DA004519C9 /* EmptyStateView.swift */; };
+		72A5D8F02C317857004519C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A5D8EF2C317857004519C9 /* Constants.swift */; };
+		72A5D8F22C317A0F004519C9 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A5D8F12C317A0F004519C9 /* UIViewController+Ext.swift */; };
+		72A5D8F62C31B866004519C9 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A5D8F52C31B866004519C9 /* OnboardingVC.swift */; };
+		72A5D8F82C31B8A6004519C9 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A5D8F72C31B8A6004519C9 /* OnboardingCell.swift */; };
+		72A5D8FB2C31B8ED004519C9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 72A5D8FA2C31B8ED004519C9 /* Lottie */; };
+		72A5D8FF2C31BF12004519C9 /* outfitAnim01.json in Resources */ = {isa = PBXBuildFile; fileRef = 72A5D8FD2C31BF12004519C9 /* outfitAnim01.json */; };
+		72A5D9002C31BF12004519C9 /* outfitAnim02.json in Resources */ = {isa = PBXBuildFile; fileRef = 72A5D8FE2C31BF12004519C9 /* outfitAnim02.json */; };
 		72D8C98A2C037F3800550B6B /* SegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D8C9892C037F3800550B6B /* SegmentedCell.swift */; };
+		72F5FC842C307D8A0069D128 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 72F5FC832C307D8A0069D128 /* RealmSwift */; };
+		72F5FC852C307D8A0069D128 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 72F5FC832C307D8A0069D128 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,7 +76,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				725306032BF7D79F0045D0E7 /* RealmSwift in Embed Frameworks */,
+				72F5FC852C307D8A0069D128 /* RealmSwift in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,7 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		72094CEF2BF0F25C00F49737 /* DressItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DressItemCell.swift; sourceTree = "<group>"; };
+		72094CEF2BF0F25C00F49737 /* DressTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DressTypeCell.swift; sourceTree = "<group>"; };
 		72094CF22BF0F4F300F49737 /* ImagePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePath.swift; sourceTree = "<group>"; };
 		721091302BF0BE6400932FF8 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		721091322BF0C7C600932FF8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -127,6 +135,13 @@
 		72908F1A2BF7A3EF0029EF9F /* UIImage+RawBytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+RawBytes.swift"; sourceTree = "<group>"; };
 		72908F1B2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
 		72A428DD2C21C93000A03A68 /* ImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
+		72A5D8EC2C3177DA004519C9 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		72A5D8EF2C317857004519C9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		72A5D8F12C317A0F004519C9 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		72A5D8F52C31B866004519C9 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		72A5D8F72C31B8A6004519C9 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		72A5D8FD2C31BF12004519C9 /* outfitAnim01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = outfitAnim01.json; sourceTree = "<group>"; };
+		72A5D8FE2C31BF12004519C9 /* outfitAnim02.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = outfitAnim02.json; sourceTree = "<group>"; };
 		72D8C9892C037F3800550B6B /* SegmentedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,7 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				721091382BF0CD6F00932FF8 /* RealmSwift in Frameworks */,
+				72F5FC842C307D8A0069D128 /* RealmSwift in Frameworks */,
+				72A5D8FB2C31B8ED004519C9 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				7210914B2BF0E5D100932FF8 /* HomeNewDressVC.swift */,
-				72094CEF2BF0F25C00F49737 /* DressItemCell.swift */,
+				72094CEF2BF0F25C00F49737 /* DressTypeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -288,6 +304,7 @@
 			children = (
 				7260F7612BEE549300FCCFD1 /* OutfitPlannerApp */,
 				7260F7602BEE549300FCCFD1 /* Products */,
+				72F5FC822C307D8A0069D128 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -316,6 +333,7 @@
 		7260F7792BEE54D700FCCFD1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				72A5D8F32C31B832004519C9 /* Onboarding */,
 				72A428D72C21C8C900A03A68 /* Image */,
 				7260F7882BEE58D100FCCFD1 /* Home */,
 				7260F7892BEE58D700FCCFD1 /* Outfit */,
@@ -328,6 +346,7 @@
 		7260F77A2BEE54DE00FCCFD1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				72A5D8EE2C31784A004519C9 /* Utilities */,
 				72094CF12BF0F4E300F49737 /* ImagePath */,
 				7210911F2BF0BB8D00932FF8 /* CoreDataHelper */,
 				7260F7832BEE57D800FCCFD1 /* ReusableView */,
@@ -343,6 +362,7 @@
 			children = (
 				7260F7842BEE580200FCCFD1 /* UIView+Ext.swift */,
 				72908F082BF79F940029EF9F /* UIImage+Ext.swift */,
+				72A5D8F12C317A0F004519C9 /* UIViewController+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -357,6 +377,7 @@
 		7260F7832BEE57D800FCCFD1 /* ReusableView */ = {
 			isa = PBXGroup;
 			children = (
+				72A5D8EB2C3177C7004519C9 /* View */,
 				721091432BF0DF7F00932FF8 /* Label */,
 				721091402BF0DF5900932FF8 /* Button */,
 				7210913D2BF0DF3500932FF8 /* Image */,
@@ -441,6 +462,7 @@
 		7260F7902BEE5B8B00FCCFD1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				72A5D8FC2C31BF07004519C9 /* LottieAnimations */,
 				7260F7622BEE549300FCCFD1 /* AppDelegate.swift */,
 				7260F7642BEE549300FCCFD1 /* SceneDelegate.swift */,
 				7260F76E2BEE549300FCCFD1 /* Assets.xcassets */,
@@ -544,6 +566,55 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		72A5D8EB2C3177C7004519C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72A5D8EC2C3177DA004519C9 /* EmptyStateView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72A5D8EE2C31784A004519C9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				72A5D8EF2C317857004519C9 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		72A5D8F32C31B832004519C9 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				72A5D8F42C31B838004519C9 /* View */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		72A5D8F42C31B838004519C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72A5D8F52C31B866004519C9 /* OnboardingVC.swift */,
+				72A5D8F72C31B8A6004519C9 /* OnboardingCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72A5D8FC2C31BF07004519C9 /* LottieAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				72A5D8FD2C31BF12004519C9 /* outfitAnim01.json */,
+				72A5D8FE2C31BF12004519C9 /* outfitAnim02.json */,
+			);
+			path = LottieAnimations;
+			sourceTree = "<group>";
+		};
+		72F5FC822C307D8A0069D128 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -562,7 +633,8 @@
 			);
 			name = OutfitPlannerApp;
 			packageProductDependencies = (
-				721091372BF0CD6F00932FF8 /* RealmSwift */,
+				72F5FC832C307D8A0069D128 /* RealmSwift */,
+				72A5D8FA2C31B8ED004519C9 /* Lottie */,
 			);
 			productName = OutfitPlannerApp;
 			productReference = 7260F75F2BEE549300FCCFD1 /* OutfitPlannerApp.app */;
@@ -594,6 +666,8 @@
 			mainGroup = 7260F7562BEE549200FCCFD1;
 			packageReferences = (
 				721091342BF0CD6F00932FF8 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				720AF8452C307A4D002A4CB6 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				72A5D8F92C31B8EC004519C9 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 7260F7602BEE549300FCCFD1 /* Products */;
 			projectDirPath = "";
@@ -609,8 +683,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72A5D8FF2C31BF12004519C9 /* outfitAnim01.json in Resources */,
 				7260F76F2BEE549300FCCFD1 /* Assets.xcassets in Resources */,
 				7260F7722BEE549300FCCFD1 /* Base in Resources */,
+				72A5D9002C31BF12004519C9 /* outfitAnim02.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,9 +699,11 @@
 			files = (
 				72908F092BF79F940029EF9F /* UIImage+Ext.swift in Sources */,
 				7253060D2BF7DBB50045D0E7 /* OutfitSelectViewModel.swift in Sources */,
+				72A5D8F22C317A0F004519C9 /* UIViewController+Ext.swift in Sources */,
 				72908F212BF7A3EF0029EF9F /* CGImagePropertyOrientation.swift in Sources */,
 				721091422BF0DF6F00932FF8 /* CustomButton.swift in Sources */,
 				72908F1F2BF7A3EF0029EF9F /* UIImage+Extensions.swift in Sources */,
+				72A5D8F82C31B8A6004519C9 /* OnboardingCell.swift in Sources */,
 				7260F7922BEE5C0700FCCFD1 /* HomeVC.swift in Sources */,
 				72908F232BF7A3EF0029EF9F /* CVPixelBuffer+Create.swift in Sources */,
 				72908F1C2BF7A3EF0029EF9F /* Array+Extensions.swift in Sources */,
@@ -633,7 +711,7 @@
 				7210913F2BF0DF4800932FF8 /* CustomImageView.swift in Sources */,
 				72908F2A2BF7A3EF0029EF9F /* MLMultiArray+Image.swift in Sources */,
 				72908F072BF79F7D0029EF9F /* DeepLabV3.mlmodel in Sources */,
-				72094CF02BF0F25C00F49737 /* DressItemCell.swift in Sources */,
+				72094CF02BF0F25C00F49737 /* DressTypeCell.swift in Sources */,
 				7260F7632BEE549300FCCFD1 /* AppDelegate.swift in Sources */,
 				72908F282BF7A3EF0029EF9F /* CGImage+CVPixelBuffer.swift in Sources */,
 				725306022BF7CDA50045D0E7 /* OutfitCell.swift in Sources */,
@@ -646,8 +724,10 @@
 				721E10602BFA23F300D9715E /* OutfitCreateVC.swift in Sources */,
 				72D8C98A2C037F3800550B6B /* SegmentedCell.swift in Sources */,
 				721091312BF0BE6400932FF8 /* DatabaseManager.swift in Sources */,
+				72A5D8F02C317857004519C9 /* Constants.swift in Sources */,
 				72908F262BF7A3EF0029EF9F /* Math.swift in Sources */,
 				721091332BF0C7C600932FF8 /* HomeViewModel.swift in Sources */,
+				72A5D8ED2C3177DA004519C9 /* EmptyStateView.swift in Sources */,
 				72278E592BF52EAA00E8533F /* Dress.swift in Sources */,
 				7260F7652BEE549300FCCFD1 /* SceneDelegate.swift in Sources */,
 				72908F2B2BF7A3EF0029EF9F /* UIImage+RawBytes.swift in Sources */,
@@ -663,6 +743,7 @@
 				7210914C2BF0E5D100932FF8 /* HomeNewDressVC.swift in Sources */,
 				721091472BF0DFAC00932FF8 /* BodyLabel.swift in Sources */,
 				725305FE2BF7C9BE0045D0E7 /* Outfit.swift in Sources */,
+				72A5D8F62C31B866004519C9 /* OnboardingVC.swift in Sources */,
 				72908F272BF7A3EF0029EF9F /* Predictions.swift in Sources */,
 				7260F7872BEE588000FCCFD1 /* TabBarVC.swift in Sources */,
 				72908F1D2BF7A3EF0029EF9F /* CVPixelBuffer+Resize.swift in Sources */,
@@ -820,7 +901,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -853,7 +934,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -895,6 +976,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		720AF8452C307A4D002A4CB6 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
 		721091342BF0CD6F00932FF8 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -903,10 +992,23 @@
 				kind = branch;
 			};
 		};
+		72A5D8F92C31B8EC004519C9 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		721091372BF0CD6F00932FF8 /* RealmSwift */ = {
+		72A5D8FA2C31B8ED004519C9 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 72A5D8F92C31B8EC004519C9 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+		72F5FC832C307D8A0069D128 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 721091342BF0CD6F00932FF8 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;

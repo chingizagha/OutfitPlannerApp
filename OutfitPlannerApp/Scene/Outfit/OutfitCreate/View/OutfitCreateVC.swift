@@ -12,10 +12,10 @@ class OutfitCreateVC: UIViewController {
     private let viewModel: OutfitCreateViewModel
     
     private let imageView = CustomImageView(frame: .zero)
-    private let createButton = CustomButton(backgroundColor: .blue, title: "Create Outfit")
+    private let createButton = CustomButton(backgroundColor: .black, title: "Create Outfit")
     private let imageButton = CustomButton(backgroundColor: .black, title: "ReCreate")
     
-    let textField: UITextField = {
+    private lazy var textField: UITextField = {
         let tf = UITextField()
         tf.textColor = .label
         tf.tintColor = .systemBlue
@@ -24,7 +24,7 @@ class OutfitCreateVC: UIViewController {
         
         tf.layer.cornerRadius = 11
         tf.backgroundColor = .secondarySystemBackground
-        tf.keyboardType = .decimalPad
+        tf.keyboardType = .default
         
         tf.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 17, height: 0))
         tf.leftViewMode = .always
@@ -33,6 +33,8 @@ class OutfitCreateVC: UIViewController {
         tf.autocapitalizationType = .sentences
         tf.autocorrectionType = .default
         tf.translatesAutoresizingMaskIntoConstraints = false
+        
+        tf.delegate = self
         
         return tf
     }()
@@ -60,6 +62,10 @@ class OutfitCreateVC: UIViewController {
         }
         imageView.image = mergeImages(images: images)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+
+        
         setUpButtons()
     }
     
@@ -73,15 +79,15 @@ class OutfitCreateVC: UIViewController {
         imageView.layer.maskedCorners = .layerMaxXMaxYCorner
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
             
-            textField.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40),
+            textField.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            textField.heightAnchor.constraint(equalToConstant: 100),
+            textField.heightAnchor.constraint(equalToConstant: 50),
             
             createButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             createButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
@@ -114,6 +120,10 @@ class OutfitCreateVC: UIViewController {
     private func setUpButtons(){
         createButton.addTarget(self, action: #selector(didTapCreateButton), for: .touchUpInside)
     }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     @objc
     private func didTapCreateButton() {
@@ -133,5 +143,14 @@ class OutfitCreateVC: UIViewController {
         navigationController?.popToRootViewController(animated: true)
     }
     
+
+}
+
+extension OutfitCreateVC: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
 }

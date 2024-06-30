@@ -42,13 +42,13 @@ class OutfitSelectVC: UIViewController {
             switch dress.type{
             case .jacket:
                 viewModel.jacketArray.append(dress)
-            case .tshirt:
+            case .shirt:
                 viewModel.tshirtArray.append(dress)
-            case .jeans:
+            case .pants:
                 viewModel.jeansArray.append(dress)
             case .shoes:
                 viewModel.shoesArray.append(dress)
-            case .accessory:
+            case .extras:
                 viewModel.otherArray.append(dress)
             }
         }
@@ -82,6 +82,7 @@ class OutfitSelectVC: UIViewController {
         print(viewModel.selectedDressArray)
         let vm = OutfitCreateViewModel(selectedDressArray: viewModel.selectedDressArray)
         let vc = OutfitCreateVC(viewModel: vm)
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     

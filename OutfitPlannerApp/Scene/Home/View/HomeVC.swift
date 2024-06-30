@@ -11,9 +11,11 @@ import RealmSwift
 class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     let viewModel = HomeViewModel()
+    let emptyStateView = EmptyStateView(message: "No Outfits?\nAdd one the outfits screen.")
     
     private var isSegmentModeOn = false
     private var titleArray = [String]()
+    private var iconArray = [String]()
     
     private let segmentedController: UISegmentedControl = {
         let sc = UISegmentedControl()
@@ -39,7 +41,7 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     private lazy var segmentedCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 100, height: 50)
+        layout.itemSize = CGSize(width: 80, height: 40)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white.withAlphaComponent(0)
         collectionView.register(SegmentedCell.self, forCellWithReuseIdentifier: SegmentedCell.identifier)
@@ -85,12 +87,12 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         
         addGradientBackground()
         
-        getClothes()
+        
         configureCollectionView()
         setupSegmentedControl()
         configureDataSource()
         layoutUI()
-        
+        getClothes()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -139,16 +141,9 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     private func setupSegmentedControl() {
         for segment in ClothesType.allCases {
             titleArray.append(segment.title)
+            iconArray.append(segment.icon)
         }
     }
-
-//    @objc private func segmentChanged(_ sender: UISegmentedControl) {
-//        if let selectedSegment = ClothesType(rawValue: sender.selectedSegmentIndex) {
-//            isSegmentModeOn = true
-//            viewModel.filterDress(selectedSegment)
-//            self.updateData(on: viewModel.filteredDressArray)
-//        }
-//    }
     
     // MARK: Button Functions
     
@@ -170,7 +165,7 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             try? jpegData.write(to: imagePath)
         }
         
-        let allCases: [ClothesType] = [.jeans, .tshirt, .jacket]
+        let allCases: [ClothesType] = [.pants, .shirt, .jacket]
         
         let dress = Dress()
         dress.imagePath = imageName
@@ -179,6 +174,7 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         
         let vm = HomeNewDressViewModel(dress: dress)
         let vc = HomeNewDressVC(viewModel: vm)
+        vc.delegate = self
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         
@@ -210,7 +206,8 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     private func layoutUI(){
         
         scrollView.addSubview(contentView)
-        contentView.addSubviews(segmentedCollectionView, collectionView)
+        contentView.addSubviews(segmentedCollectionView, collectionView, emptyStateView)
+        emptyStateView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubviews(scrollView)
         
         let hConst = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
@@ -239,7 +236,12 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             collectionView.topAnchor.constraint(equalTo: segmentedCollectionView.bottomAnchor, constant: 5),
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            emptyStateView.topAnchor.constraint(equalTo: segmentedCollectionView.bottomAnchor, constant: 5),
+            emptyStateView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            emptyStateView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            emptyStateView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
     
@@ -265,6 +267,14 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     }
     
     private func updateData(on dress: [Dress]) {
+        if dress.isEmpty {
+            emptyStateView.isHidden = false
+            collectionView.isHidden = true
+        } else {
+            emptyStateView.isHidden = true
+            collectionView.isHidden = false
+        }
+        
         var snapshot = NSDiffableDataSourceSnapshot<Section, Dress>()
         snapshot.appendSections([.main])
         snapshot.appendItems(dress)

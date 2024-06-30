@@ -15,18 +15,22 @@ class HomeNewDressVC: UIViewController {
     private var oldImage: UIImage?
     
     private let imageView = CustomImageView(frame: .zero)
-    //private let addButton = CustomButton(backgroundColor: .systemBlue, title: "Add")
-    private let typeButton = CustomButton(backgroundColor: .systemGray, title: "Type")
-    private let magicButton = CustomButton(backgroundColor: .systemGray, icon: "pencil", title: "Magic")
-    private let backButton = CustomButton(backgroundColor: .systemGray, icon: "arrowshape.turn.up.backward", title: "")
+    private let typeLabel = TitleLabel(textAlignment: .natural, fontSize: 22)
+    private let magicButton = CustomButton(backgroundColor: .black, icon: "pencil", title: "Magic")
+    private let backButton = CustomButton(backgroundColor: .black, icon: "arrowshape.turn.up.backward", title: "")
     
-    private lazy var pickerView: UIPickerView = {
-        let pv = UIPickerView()
-        pv.isHidden = true
-        pv.delegate = self
-        pv.dataSource = self
-        pv.translatesAutoresizingMaskIntoConstraints = false
-        return pv
+    private lazy var typeCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 60, height: 60)
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.white.withAlphaComponent(0)
+        collectionView.register(DressTypeCell.self, forCellWithReuseIdentifier: DressTypeCell.identifier)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 5, right: 0)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
     }()
     
     init(viewModel: HomeNewDressViewModel) {
@@ -46,10 +50,7 @@ class HomeNewDressVC: UIViewController {
         view.backgroundColor = .systemBackground
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelButton))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(didTapAddButton))
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
-        view.addGestureRecognizer(tapGesture)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(didTapAddButton))
         
         title = "New Clothes"
         layoutUI()
@@ -60,8 +61,9 @@ class HomeNewDressVC: UIViewController {
         
         let padding: CGFloat = 20
         
+        typeLabel.text = "Type"
         
-        view.addSubviews(imageView, typeButton, pickerView, magicButton, backButton)
+        view.addSubviews(imageView, magicButton, backButton, typeLabel, typeCollectionView)
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -69,41 +71,32 @@ class HomeNewDressVC: UIViewController {
             imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
             
-            typeButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
-            typeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            typeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            typeButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            //            addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-            //            addButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            //            addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            //            addButton.heightAnchor.constraint(equalToConstant: 50),
-            
             magicButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.68),
             backButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
             
-            // Set buttons to be in the same row
+             //Set buttons to be in the same row
             magicButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            magicButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            magicButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             magicButton.heightAnchor.constraint(equalToConstant: 50),
-            //backButton.leadingAnchor.constraint(equalTo: magicButton.trailingAnchor, constant: padding),
             backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             backButton.topAnchor.constraint(equalTo: magicButton.topAnchor),
             backButton.bottomAnchor.constraint(equalTo: magicButton.bottomAnchor),
             
+            typeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            typeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            typeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            typeLabel.heightAnchor.constraint(equalToConstant: 50),
             
-            
-            pickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            pickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            pickerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            typeCollectionView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 5),
+            typeCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            typeCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            typeCollectionView.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
     
     // MARK: Set Up Button
     
     private func setUpButtons() {
-        //addButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
-        typeButton.addTarget(self, action: #selector(didTapTypeButton), for: .touchUpInside)
         magicButton.addTarget(self, action: #selector(didTapMagicButton), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
         backButton.isEnabled = false
@@ -120,28 +113,15 @@ class HomeNewDressVC: UIViewController {
         }
         
         viewModel.dress.imagePath = imageName
-        
+        print(viewModel.selectedType)
         viewModel.saveData(title: "", imagePath: viewModel.dress.imagePath, type: viewModel.selectedType)
         delegate?.didAddNewDress()
-        dismiss(animated: true)
+        didTapCancelButton()
     }
     
     @objc
     private func didTapCancelButton() {
         self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @objc
-    private func screenTapped() {
-        if !pickerView.isHidden {
-            pickerView.isHidden = true
-            typeButton.setTitle(viewModel.selectedType.title, for: .normal)
-        }
-    }
-    
-    @objc
-    private func didTapTypeButton() {
-        pickerView.isHidden = false
     }
     
     @objc
@@ -160,24 +140,33 @@ class HomeNewDressVC: UIViewController {
     }
 }
 
-extension HomeNewDressVC: UIPickerViewDelegate, UIPickerViewDataSource {
+extension HomeNewDressVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.pickerData.count
     }
     
-    // MARK: - UIPickerViewDelegate
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return viewModel.pickerData[row]
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DressTypeCell.identifier, for: indexPath) as? DressTypeCell else { fatalError() }
+        cell.configure(with: viewModel.pickerData[indexPath.row])
+        return cell
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //selectedType = PickerOptions(rawValue: pickerData[row])
-        viewModel.selectedType = ClothesType(rawValue: viewModel.pickerData.firstIndex(of: viewModel.pickerData[row])!)!
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let type = viewModel.pickerDataTitle[indexPath.row]
+        if type == ClothesType.jacket.title {
+            viewModel.selectedType = ClothesType.jacket
+        } else  if type == ClothesType.shirt.title {
+            viewModel.selectedType = ClothesType.shirt
+        } else  if type == ClothesType.pants.title {
+            viewModel.selectedType = ClothesType.pants
+        } else  if type == ClothesType.shoes.title {
+            viewModel.selectedType = ClothesType.shoes
+        } else  if type == ClothesType.extras.title {
+            viewModel.selectedType = ClothesType.extras
+        }
+        print(type)
     }
+    
+    
 }

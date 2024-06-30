@@ -14,6 +14,7 @@ enum Section {
 class OutfitVC: UIViewController {
     
     let viewModel = OutfitViewModel()
+    let emptyStateView = EmptyStateView(message: "No Outfits?\nAdd one the outfits screen.")
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Outfit>!
@@ -26,7 +27,7 @@ class OutfitVC: UIViewController {
         // Update the gradient layer frame to match the view's bounds
         gradientLayer.frame = view.bounds
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,12 +42,15 @@ class OutfitVC: UIViewController {
         // Add the gradient layer to the view's layer
         view.layer.insertSublayer(gradientLayer, at: 0)
         
+        emptyStateView.isHidden = true
+        
         addGradientBackground()
         
-        getOutfits()
+        
         configureCollectionView()
         configureDataSource()
         layoutUI()
+        getOutfits()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("outfitAdded"), object: nil, queue: nil) { _ in
             self.getOutfits()
@@ -98,6 +102,7 @@ class OutfitVC: UIViewController {
         
         menuChildren.append(UIAction(title: "Create Outfit", image: UIImage(systemName: "hanger"), handler: { [weak self] _ in
             let vc = OutfitSelectVC()
+            vc.hidesBottomBarWhenPushed = true
             self?.navigationController?.pushViewController(vc, animated: true)
         }))
         
@@ -111,13 +116,19 @@ class OutfitVC: UIViewController {
     
     private func layoutUI(){
         
-        view.addSubviews(collectionView)
+        view.addSubviews(collectionView, emptyStateView)
+        emptyStateView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            emptyStateView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            emptyStateView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            emptyStateView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            emptyStateView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
@@ -148,6 +159,14 @@ class OutfitVC: UIViewController {
     }
     
     private func updateData(on outfit: [Outfit]) {
+        if outfit.isEmpty {
+            emptyStateView.isHidden = false
+            collectionView.isHidden = true
+        } else {
+            emptyStateView.isHidden = true
+            collectionView.isHidden = false
+        }
+        
         var snapshot = NSDiffableDataSourceSnapshot<Section, Outfit>()
         snapshot.appendSections([.main])
         snapshot.appendItems(outfit)
@@ -169,7 +188,6 @@ class OutfitVC: UIViewController {
         return layout
     }
 }
-
 extension OutfitVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

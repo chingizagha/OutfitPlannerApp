@@ -16,7 +16,8 @@ class HomeNewDressViewModel {
     let dress: Dress
     
     var selectedType = ClothesType()
-    let pickerData = ClothesType.allCases.map { $0.title }
+    let pickerData = ClothesType.allCases.map { $0.icon }
+    let pickerDataTitle = ClothesType.allCases.map { $0.title }
     
     init(dress: Dress) {
         self.dress = dress
@@ -29,6 +30,7 @@ class HomeNewDressViewModel {
         dress.title = title
         dress.imagePath = imagePath
         dress.type = type
+        print(dress)
         databaseManager.saveData(object: dress)
     }
     
