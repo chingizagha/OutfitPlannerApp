@@ -22,8 +22,8 @@ class SegmentedCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            contentView.backgroundColor = isSelected ? .black : UIColor.white.withAlphaComponent(0)
-            nameLabel.textColor = isSelected ? .white : .black
+            contentView.backgroundColor = isSelected ? .label: .systemBackground
+            nameLabel.textColor = isSelected ? .systemBackground: .label
         }
     }
     
@@ -33,10 +33,10 @@ class SegmentedCell: UICollectionViewCell {
     
     private func layoutUI(){
         
-        contentView.backgroundColor = UIColor.white.withAlphaComponent(0)
-        nameLabel.textColor = .black
-        contentView.layer.borderWidth = 0.5
-        contentView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+        contentView.backgroundColor = .systemBackground
+        nameLabel.textColor = .label
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.label.cgColor
         contentView.addSubviews(nameLabel)
         
         contentView.layer.cornerRadius = 25 // Adjust as needed for your design

@@ -19,15 +19,6 @@ class OutfitVC: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Outfit>!
     
-    let gradientLayer = CAGradientLayer()
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        // Update the gradient layer frame to match the view's bounds
-        gradientLayer.frame = view.bounds
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,16 +28,8 @@ class OutfitVC: UIViewController {
         
         navigationItem.rightBarButtonItem = setUpDropDown()
         
-        gradientLayer.frame = view.bounds
-        
-        // Add the gradient layer to the view's layer
-        view.layer.insertSublayer(gradientLayer, at: 0)
-        
         emptyStateView.isHidden = true
-        
-        addGradientBackground()
-        
-        
+    
         configureCollectionView()
         configureDataSource()
         layoutUI()
@@ -55,43 +38,6 @@ class OutfitVC: UIViewController {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("outfitAdded"), object: nil, queue: nil) { _ in
             self.getOutfits()
         }
-        
-        
-    }
-    
-    
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        // Check if the user interface style has changed
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            addGradientBackground()
-        }
-    }
-    
-    func addGradientBackground() {
-        
-        if traitCollection.userInterfaceStyle == .dark {
-            // Colors for dark mode
-            gradientLayer.colors = [
-                UIColor.secondarySystemBackground.cgColor,
-                UIColor.systemGreen.cgColor
-            ]
-        } else {
-            // Colors for light mode
-            gradientLayer.colors = [
-                UIColor.systemBackground.cgColor,
-                UIColor.green.cgColor
-            ]
-        }
-        
-        // Optionally set the locations of the colors
-        gradientLayer.locations = [0.0, 1.0]
-        
-        // Optionally set the start and end points of the gradient
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
     }
     
     private func setUpDropDown() -> UIBarButtonItem{

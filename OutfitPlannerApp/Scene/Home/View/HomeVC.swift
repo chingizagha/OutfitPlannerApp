@@ -71,12 +71,14 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         super.viewDidLoad()
         
         title = "Clothes"
+        //self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemBackground]
+
         
          //Find url for Realm database
 //        let realm = try! Realm()
 //        print(Realm.Configuration.defaultConfiguration.fileURL)
         
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .systemBackground
         
         navigationItem.rightBarButtonItem = setUpDropDown()
         
@@ -85,7 +87,7 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         // Add the gradient layer to the view's layer
         view.layer.insertSublayer(gradientLayer, at: 0)
         
-        addGradientBackground()
+        //addGradientBackground()
         
         
         configureCollectionView()
@@ -95,40 +97,40 @@ class HomeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         getClothes()
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        // Check if the user interface style has changed
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            addGradientBackground()
-        }
-    }
+//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        super.traitCollectionDidChange(previousTraitCollection)
+//        
+//        // Check if the user interface style has changed
+//        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+//            addGradientBackground()
+//        }
+//    }
 
-    func addGradientBackground() {
-        
-        if traitCollection.userInterfaceStyle == .dark {
-            // Colors for dark mode
-            gradientLayer.colors = [
-                UIColor.secondarySystemBackground.cgColor,
-                UIColor.systemGreen.cgColor
-            ]
-            print("dark")
-        } else {
-            // Colors for light mode
-            gradientLayer.colors = [
-                UIColor.systemBackground.cgColor,
-                UIColor.green.cgColor
-            ]
-            print("else")
-        }
-        
-        // Optionally set the locations of the colors
-        gradientLayer.locations = [0.0, 1.0]
-        
-        // Optionally set the start and end points of the gradient
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-    }
+//    func addGradientBackground() {
+//        
+//        if traitCollection.userInterfaceStyle == .dark {
+//            // Colors for dark mode
+//            gradientLayer.colors = [
+//                UIColor.secondarySystemBackground.cgColor,
+//                UIColor.systemGreen.cgColor
+//            ]
+//            print("dark")
+//        } else {
+//            // Colors for light mode
+//            gradientLayer.colors = [
+//                UIColor.systemBackground.cgColor,
+//                UIColor.green.cgColor
+//            ]
+//            print("else")
+//        }
+//        
+//        // Optionally set the locations of the colors
+//        gradientLayer.locations = [0.0, 1.0]
+//        
+//        // Optionally set the start and end points of the gradient
+//        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+//        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+//    }
     
     private func getClothes() {
         viewModel.fetchData()

@@ -12,8 +12,8 @@ class OutfitCreateVC: UIViewController {
     private let viewModel: OutfitCreateViewModel
     
     private let imageView = CustomImageView(frame: .zero)
-    private let createButton = CustomButton(backgroundColor: .black, title: "Create Outfit")
-    private let imageButton = CustomButton(backgroundColor: .black, title: "ReCreate")
+    private let createButton = CustomButton(backgroundColor: .label, titleColor: .systemBackground, title: "Create Outfit")
+    private let imageButton = CustomButton(backgroundColor: .label, titleColor: .systemBackground, title: "ReCreate")
     
     private lazy var textField: UITextField = {
         let tf = UITextField()

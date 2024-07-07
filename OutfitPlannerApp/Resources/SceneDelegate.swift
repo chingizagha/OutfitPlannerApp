@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func configureNavigationBar() {
-        UINavigationBar.appearance().tintColor = .black
+        UINavigationBar.appearance().tintColor = .label
     }
     
     
@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         self.window?.makeKeyAndVisible()
+        configureNavigationBar()
     }
     
     public func checkAuthentication() {

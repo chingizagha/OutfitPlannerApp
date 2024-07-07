@@ -16,8 +16,8 @@ class HomeNewDressVC: UIViewController {
     
     private let imageView = CustomImageView(frame: .zero)
     private let typeLabel = TitleLabel(textAlignment: .natural, fontSize: 22)
-    private let magicButton = CustomButton(backgroundColor: .black, icon: "pencil", title: "Magic")
-    private let backButton = CustomButton(backgroundColor: .black, icon: "arrowshape.turn.up.backward", title: "")
+    private let magicButton = CustomButton(backgroundColor: .label, titleColor: .systemBackground, icon: "pencil", title: "Magic")
+    private let backButton = CustomButton(backgroundColor: .label, titleColor: .systemBackground, icon: "arrowshape.turn.up.backward", title: "")
     
     private lazy var typeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -71,6 +71,18 @@ class HomeNewDressVC: UIViewController {
             imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
             
+            typeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            typeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            typeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            typeLabel.heightAnchor.constraint(equalToConstant: 50),
+            
+            typeCollectionView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 5),
+            typeCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            typeCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            typeCollectionView.heightAnchor.constraint(equalToConstant: 80),
+            
+            magicButton.topAnchor.constraint(equalTo: typeCollectionView.bottomAnchor, constant: 15),
+            
             magicButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.68),
             backButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
             
@@ -81,16 +93,6 @@ class HomeNewDressVC: UIViewController {
             backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             backButton.topAnchor.constraint(equalTo: magicButton.topAnchor),
             backButton.bottomAnchor.constraint(equalTo: magicButton.bottomAnchor),
-            
-            typeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-            typeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            typeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            typeLabel.heightAnchor.constraint(equalToConstant: 50),
-            
-            typeCollectionView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 5),
-            typeCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            typeCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            typeCollectionView.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
     

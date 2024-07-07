@@ -16,8 +16,9 @@ struct Slide {
     let animationName: String
     
     static let collection: [Slide] = [
-        .init(title: "Easy to find", text: "Find all your house needs in one place. We provide every service to make your home experience smooth", animationName: "outfitAnim01"),
-        .init(title: "Easy for Transportation", text: "We provide the best transportation service and organize your furniture properly to prevent any damage", animationName: "outfitAnim02"),
+        .init(title: "Easy for Transportation", text: "We provide the best transportation service and organize your furniture properly to prevent any damage", animationName: "outfitAnim03"),
+        .init(title: "Easy for Transportation", text: "We provide the best transportation service and organize your furniture properly to prevent any damage", animationName: "outfitAnim05"),
+        .init(title: "Easy for Transportation", text: "We provide the best transportation service and organize your furniture properly to prevent any damage", animationName: "outfitAnim06"),
     ]
 }
 
@@ -27,8 +28,10 @@ class OnboardingVC: UIViewController {
     
     private let pageControl: UIPageControl = {
         let control = UIPageControl()
-        control.pageIndicatorTintColor = .darkGray
-        control.currentPageIndicatorTintColor = .black
+        control.pageIndicatorTintColor = .label
+//        control.layer.borderColor = UIColor.systemBackground.cgColor
+//        control.layer.borderWidth = 1
+        control.currentPageIndicatorTintColor  = .systemBackground
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
     }()
@@ -66,14 +69,14 @@ class OnboardingVC: UIViewController {
         view.addSubviews(pageControl, collectionView)
         
         NSLayoutConstraint.activate([
+            pageControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            pageControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
-            pageControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            pageControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: pageControl.topAnchor)
         ])
     }
     
@@ -92,9 +95,9 @@ class OnboardingVC: UIViewController {
     
     private func handleSkipButtonTap(){
         UserDefaults.standard.set(true, forKey: "notFirstInApp")
-        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-            sceneDelegate.checkAuthentication() 
-        }
+        let vc = TabBarVC()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

@@ -32,11 +32,11 @@ class OnboardingCell: UICollectionViewCell {
         return stackView
     }()
     
-    private var titleLabel = TitleLabel(textAlignment: .center, fontSize: 32)
+    private var titleLabel = TitleLabel(textAlignment: .left, fontSize: 32)
     private var bodyLabel = BodyLabel(textAlignment: .center)
     
     private var skipButton = CustomButton(backgroundColor: .clear, titleColor: .label, title: "Skip Now")
-    private var nextButton = CustomButton(backgroundColor: .black, icon: "arrowtriangle.right.fill")
+    private var nextButton = CustomButton(backgroundColor: .label, titleColor: .systemBackground, icon: "arrowtriangle.right.fill")
     
     
     override init(frame: CGRect) {
@@ -62,25 +62,23 @@ class OnboardingCell: UICollectionViewCell {
     }
     
     private func layoutUI(){
-//        stackView.addArrangedSubview(skipButton)
-//        stackView.addArrangedSubview(nextButton)
         
         contentView.addSubviews(animationView, titleLabel, bodyLabel, skipButton, nextButton)
         
         NSLayoutConstraint.activate([
-            animationView.topAnchor.constraint(equalTo: topAnchor, constant: 50),
+            animationView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             animationView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            animationView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            animationView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            animationView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            animationView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
             animationView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
             
             titleLabel.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: animationView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: animationView.trailingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: animationView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: animationView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             
             bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            bodyLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 20),
-            bodyLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: -20),
+            bodyLabel.leadingAnchor.constraint(equalTo: titleLabel.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            bodyLabel.trailingAnchor.constraint(equalTo: titleLabel.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             
             skipButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
             skipButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
@@ -91,10 +89,6 @@ class OnboardingCell: UICollectionViewCell {
             nextButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
             nextButton.heightAnchor.constraint(equalToConstant: 50),
             nextButton.widthAnchor.constraint(equalTo: nextButton.heightAnchor)
-//
-//            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
-//            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-//            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         ])
     }
     
