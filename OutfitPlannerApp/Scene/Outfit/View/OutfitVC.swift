@@ -18,6 +18,7 @@ class OutfitVC: UIViewController {
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Outfit>!
+    var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class OutfitVC: UIViewController {
         configureDataSource()
         layoutUI()
         getOutfits()
+        configureSearchController()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("outfitAdded"), object: nil, queue: nil) { _ in
             self.getOutfits()
@@ -56,6 +58,14 @@ class OutfitVC: UIViewController {
         
         button.showsMenuAsPrimaryAction = true
         return UIBarButtonItem(customView: button)
+    }
+    
+    private func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Searc for a username"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
     }
     
     // MARK: Layout Section
@@ -136,10 +146,6 @@ class OutfitVC: UIViewController {
 }
 extension OutfitVC: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let config = UIContextMenuConfiguration(
             identifier: nil,
@@ -155,5 +161,36 @@ extension OutfitVC: UICollectionViewDelegate {
             }
         return config
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let outfit = (isSearching ? viewModel.filteredOutfitArray : viewModel.outfitArray)[indexPath.item]
+        
+        let path = ImagePath.shared.getDocumentDirectory().appendingPathComponent(outfit.imagePath)
+        let fullImage = UIImage(contentsOfFile: path.path)
+        let vc = ImageVC(title: "", image: fullImage ?? UIImage(systemName: "person")!)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
 }
+
+extension OutfitVC: UISearchResultsUpdating{
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else {
+            viewModel.filteredOutfitArray.removeAll()
+            updateData(on: viewModel.outfitArray)
+            isSearching = false
+            return
+        }
+        isSearching = true
+        viewModel.filterDress(name: filter.lowercased())
+        updateData(on: viewModel.filteredOutfitArray)
+    }
+    
+    
+   
+    
+}
+
 

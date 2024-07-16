@@ -40,6 +40,11 @@
 		7260F7872BEE588000FCCFD1 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260F7862BEE588000FCCFD1 /* TabBarVC.swift */; };
 		7260F7922BEE5C0700FCCFD1 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260F7912BEE5C0700FCCFD1 /* HomeVC.swift */; };
 		7260F7942BEE5C1300FCCFD1 /* OutfitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260F7932BEE5C1300FCCFD1 /* OutfitVC.swift */; };
+		726F54D72C3AAF7F0035A1F2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F54D62C3AAF7F0035A1F2 /* SettingsView.swift */; };
+		726F54DB2C3AAFF50035A1F2 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F54DA2C3AAFF50035A1F2 /* SettingsVC.swift */; };
+		726F54DD2C3AB05E0035A1F2 /* SettingsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F54DC2C3AB05E0035A1F2 /* SettingsCellViewModel.swift */; };
+		726F54DF2C3AB08F0035A1F2 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F54DE2C3AB08F0035A1F2 /* SettingsOption.swift */; };
+		726F54E12C3AB0BE0035A1F2 /* SettingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F54E02C3AB0BE0035A1F2 /* SettingsViewViewModel.swift */; };
 		72908F072BF79F7D0029EF9F /* DeepLabV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 72908F062BF79F7D0029EF9F /* DeepLabV3.mlmodel */; };
 		72908F092BF79F940029EF9F /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F082BF79F940029EF9F /* UIImage+Ext.swift */; };
 		72908F1C2BF7A3EF0029EF9F /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F0B2BF7A3EE0029EF9F /* Array+Extensions.swift */; };
@@ -123,6 +128,11 @@
 		7260F7862BEE588000FCCFD1 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		7260F7912BEE5C0700FCCFD1 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		7260F7932BEE5C1300FCCFD1 /* OutfitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitVC.swift; sourceTree = "<group>"; };
+		726F54D62C3AAF7F0035A1F2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		726F54DA2C3AAFF50035A1F2 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		726F54DC2C3AB05E0035A1F2 /* SettingsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellViewModel.swift; sourceTree = "<group>"; };
+		726F54DE2C3AB08F0035A1F2 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
+		726F54E02C3AB0BE0035A1F2 /* SettingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewViewModel.swift; sourceTree = "<group>"; };
 		72908F062BF79F7D0029EF9F /* DeepLabV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3.mlmodel; sourceTree = "<group>"; };
 		72908F082BF79F940029EF9F /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		72908F0B2BF7A3EE0029EF9F /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -492,6 +502,9 @@
 		7260F7962BEE5C3B00FCCFD1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				726F54DC2C3AB05E0035A1F2 /* SettingsCellViewModel.swift */,
+				726F54DE2C3AB08F0035A1F2 /* SettingsOption.swift */,
+				726F54E02C3AB0BE0035A1F2 /* SettingsViewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -499,6 +512,8 @@
 		7260F7972BEE5C4000FCCFD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				726F54D62C3AAF7F0035A1F2 /* SettingsView.swift */,
+				726F54DA2C3AAFF50035A1F2 /* SettingsVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -734,6 +749,7 @@
 				72908F222BF7A3EF0029EF9F /* MLModel+Images.swift in Sources */,
 				7253060B2BF7DB9F0045D0E7 /* OutfitSelectVC.swift in Sources */,
 				7210913C2BF0DE8300932FF8 /* DressCell.swift in Sources */,
+				726F54D72C3AAF7F0035A1F2 /* SettingsView.swift in Sources */,
 				725306002BF7CD140045D0E7 /* OutfitViewModel.swift in Sources */,
 				72A428DE2C21C93000A03A68 /* ImageVC.swift in Sources */,
 				7260F7852BEE580200FCCFD1 /* UIView+Ext.swift in Sources */,
@@ -750,18 +766,22 @@
 				7210914E2BF0E5DD00932FF8 /* HomeNewDressViewModel.swift in Sources */,
 				721E10622BFA240500D9715E /* OutfitCreateViewModel.swift in Sources */,
 				72908F202BF7A3EF0029EF9F /* MLMultiArray+Helpers.swift in Sources */,
+				726F54DF2C3AB08F0035A1F2 /* SettingsOption.swift in Sources */,
 				72908F242BF7A3EF0029EF9F /* CGImage+RawBytes.swift in Sources */,
 				72908F2C2BF7A3EF0029EF9F /* UIImage+CVPixelBuffer.swift in Sources */,
 				7260F7942BEE5C1300FCCFD1 /* OutfitVC.swift in Sources */,
 				721091452BF0DF9700932FF8 /* TitleLabel.swift in Sources */,
 				72094CF32BF0F4F300F49737 /* ImagePath.swift in Sources */,
 				72908F252BF7A3EF0029EF9F /* CVPixelBuffer+Rotate.swift in Sources */,
+				726F54DB2C3AAFF50035A1F2 /* SettingsVC.swift in Sources */,
 				7210914C2BF0E5D100932FF8 /* HomeNewDressVC.swift in Sources */,
 				721091472BF0DFAC00932FF8 /* BodyLabel.swift in Sources */,
 				725305FE2BF7C9BE0045D0E7 /* Outfit.swift in Sources */,
 				72A5D8F62C31B866004519C9 /* OnboardingVC.swift in Sources */,
+				726F54E12C3AB0BE0035A1F2 /* SettingsViewViewModel.swift in Sources */,
 				72908F272BF7A3EF0029EF9F /* Predictions.swift in Sources */,
 				7260F7872BEE588000FCCFD1 /* TabBarVC.swift in Sources */,
+				726F54DD2C3AB05E0035A1F2 /* SettingsCellViewModel.swift in Sources */,
 				72908F1D2BF7A3EF0029EF9F /* CVPixelBuffer+Resize.swift in Sources */,
 				72908F292BF7A3EF0029EF9F /* CoreML+Combine.swift in Sources */,
 				72908F1E2BF7A3EF0029EF9F /* NonMaxSuppression.swift in Sources */,

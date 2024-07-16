@@ -10,6 +10,7 @@ import Foundation
 class OutfitViewModel {
     
     var outfitArray = [Outfit]()
+    var filteredOutfitArray = [Outfit]()
     
     let databaseManager = DatabaseManager()
     
@@ -19,5 +20,9 @@ class OutfitViewModel {
     
     func deleteData(outfit: Outfit) {
         databaseManager.deleteData(object: outfit)
+    }
+    
+    func filterDress(name: String) {
+        filteredOutfitArray = outfitArray.filter { $0.title == name }
     }
 }

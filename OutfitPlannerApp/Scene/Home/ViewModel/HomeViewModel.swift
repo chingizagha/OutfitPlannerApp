@@ -18,8 +18,6 @@ class HomeViewModel {
         dressArray = databaseManager.fetchData()
     }
     
-   
-    
     func deleteData(dress: Dress) {
         databaseManager.deleteData(object: dress)
     }
