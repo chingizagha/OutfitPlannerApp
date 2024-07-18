@@ -45,6 +45,7 @@
 		726F54DD2C3AB05E0035A1F2 /* SettingsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F54DC2C3AB05E0035A1F2 /* SettingsCellViewModel.swift */; };
 		726F54DF2C3AB08F0035A1F2 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F54DE2C3AB08F0035A1F2 /* SettingsOption.swift */; };
 		726F54E12C3AB0BE0035A1F2 /* SettingsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726F54E02C3AB0BE0035A1F2 /* SettingsViewViewModel.swift */; };
+		728C55CA2C4930AF000F9F61 /* OutfitPlannerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728C55C92C4930AF000F9F61 /* OutfitPlannerAppTests.swift */; };
 		72908F072BF79F7D0029EF9F /* DeepLabV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 72908F062BF79F7D0029EF9F /* DeepLabV3.mlmodel */; };
 		72908F092BF79F940029EF9F /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F082BF79F940029EF9F /* UIImage+Ext.swift */; };
 		72908F1C2BF7A3EF0029EF9F /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72908F0B2BF7A3EE0029EF9F /* Array+Extensions.swift */; };
@@ -77,6 +78,16 @@
 		72F5FC842C307D8A0069D128 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 72F5FC832C307D8A0069D128 /* RealmSwift */; };
 		72F5FC852C307D8A0069D128 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 72F5FC832C307D8A0069D128 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		728C55CB2C4930AF000F9F61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7260F7572BEE549200FCCFD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7260F75E2BEE549300FCCFD1;
+			remoteInfo = OutfitPlannerApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		725306042BF7D79F0045D0E7 /* Embed Frameworks */ = {
@@ -133,6 +144,8 @@
 		726F54DC2C3AB05E0035A1F2 /* SettingsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellViewModel.swift; sourceTree = "<group>"; };
 		726F54DE2C3AB08F0035A1F2 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
 		726F54E02C3AB0BE0035A1F2 /* SettingsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewViewModel.swift; sourceTree = "<group>"; };
+		728C55C72C4930AF000F9F61 /* OutfitPlannerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutfitPlannerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		728C55C92C4930AF000F9F61 /* OutfitPlannerAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitPlannerAppTests.swift; sourceTree = "<group>"; };
 		72908F062BF79F7D0029EF9F /* DeepLabV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DeepLabV3.mlmodel; sourceTree = "<group>"; };
 		72908F082BF79F940029EF9F /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		72908F0B2BF7A3EE0029EF9F /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -170,6 +183,13 @@
 			files = (
 				72F5FC842C307D8A0069D128 /* RealmSwift in Frameworks */,
 				72A5D8FB2C31B8ED004519C9 /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		728C55C42C4930AF000F9F61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +343,7 @@
 				7260F7612BEE549300FCCFD1 /* OutfitPlannerApp */,
 				7260F7602BEE549300FCCFD1 /* Products */,
 				72F5FC822C307D8A0069D128 /* Frameworks */,
+				728C55C82C4930AF000F9F61 /* OutfitPlannerAppTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -330,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				7260F75F2BEE549300FCCFD1 /* OutfitPlannerApp.app */,
+				728C55C72C4930AF000F9F61 /* OutfitPlannerAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -525,6 +547,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		728C55C82C4930AF000F9F61 /* OutfitPlannerAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				728C55C92C4930AF000F9F61 /* OutfitPlannerAppTests.swift */,
+			);
+			path = OutfitPlannerAppTests;
+			sourceTree = "<group>";
+		};
 		72908F052BF79F620029EF9F /* CoreML */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +697,24 @@
 			productReference = 7260F75F2BEE549300FCCFD1 /* OutfitPlannerApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		728C55C62C4930AF000F9F61 /* OutfitPlannerAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 728C55CF2C4930AF000F9F61 /* Build configuration list for PBXNativeTarget "OutfitPlannerAppTests" */;
+			buildPhases = (
+				728C55C32C4930AF000F9F61 /* Sources */,
+				728C55C42C4930AF000F9F61 /* Frameworks */,
+				728C55C52C4930AF000F9F61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				728C55CC2C4930AF000F9F61 /* PBXTargetDependency */,
+			);
+			name = OutfitPlannerAppTests;
+			productName = OutfitPlannerAppTests;
+			productReference = 728C55C72C4930AF000F9F61 /* OutfitPlannerAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -674,11 +722,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					7260F75E2BEE549300FCCFD1 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					728C55C62C4930AF000F9F61 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 7260F75E2BEE549300FCCFD1;
 					};
 				};
 			};
@@ -701,6 +753,7 @@
 			projectRoot = "";
 			targets = (
 				7260F75E2BEE549300FCCFD1 /* OutfitPlannerApp */,
+				728C55C62C4930AF000F9F61 /* OutfitPlannerAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -718,6 +771,13 @@
 				720A33792C3AA10000F55226 /* outfitAnim04.json in Resources */,
 				72A5D9002C31BF12004519C9 /* outfitAnim02.json in Resources */,
 				720A33762C3AA10000F55226 /* outfitAnim06.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		728C55C52C4930AF000F9F61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,7 +849,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		728C55C32C4930AF000F9F61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				728C55CA2C4930AF000F9F61 /* OutfitPlannerAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		728C55CC2C4930AF000F9F61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7260F75E2BEE549300FCCFD1 /* OutfitPlannerApp */;
+			targetProxy = 728C55CB2C4930AF000F9F61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7260F7702BEE549300FCCFD1 /* LaunchScreen.storyboard */ = {
@@ -988,6 +1064,44 @@
 			};
 			name = Release;
 		};
+		728C55CD2C4930AF000F9F61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NJVM2X728T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chingizagha.OutfitPlannerAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OutfitPlannerApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OutfitPlannerApp";
+			};
+			name = Debug;
+		};
+		728C55CE2C4930AF000F9F61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NJVM2X728T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chingizagha.OutfitPlannerAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OutfitPlannerApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OutfitPlannerApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1005,6 +1119,15 @@
 			buildConfigurations = (
 				7260F7772BEE549300FCCFD1 /* Debug */,
 				7260F7782BEE549300FCCFD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		728C55CF2C4930AF000F9F61 /* Build configuration list for PBXNativeTarget "OutfitPlannerAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				728C55CD2C4930AF000F9F61 /* Debug */,
+				728C55CE2C4930AF000F9F61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
